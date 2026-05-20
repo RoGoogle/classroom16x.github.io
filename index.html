@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon de Classroom -->
+     <link rel="icon" type="image/png" href="https://files.catbox.moe/0rwctq.png">
+    <!-- Ponemos "Loading..." porque parece que esta detectando el titulo -->
+    <title>Loading...</title>
+    <!-- Para cuando Google lo indexe -->
+   
+    <!-- Estilo CSS cargado desde catbox (para no alargar el html) -->
+    <link rel="stylesheet" href="https://files.catbox.moe/v48766.css">
+   
+    <!-- Estilos Personalizados -->
+    <style>
+        :root {
+            --theme-color: #0f1aab;
+            --xp-color: #0958b3;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: url('https://files.catbox.moe/0rqna3.woff2') format('woff2');
+            font-display: swap;
+        }
+            @font-face {
+            font-family: 'Inter-SemiBold';
+            src: url('https://files.catbox.moe/ps9bqj.woff2') format('woff2');
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Inter-Bold';
+            src: url('https://files.catbox.moe/4usnmb.woff2') format('woff2');
+            font-display: swap;
+        }
+       
+        /* Clases Globales */
+        .titulo h1 {
+            font-family: 'Inter-SemiBold', sans-serif;
+        }
+        .card-masonry {
+            font-family: 'Inter', sans-serif;
+        }
+       
+        /* Optimización de Tarjetas */
+        .card-masonry .card img {
+            border-radius: 1em;
+        }
+        .card-masonry .card-body span {
+            color: white;
+        }
+        .img-custom-width {
+            width: 100%;
+        }
+        .buscador {
+            transform: translate(302px, -35px);
+        }
+
+        /* 💻 Estilos para el visor del juego incrustado (Se adapta a tu diseño) */
+        #pantalla-juego {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #visor-juego {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            border: 3px solid var(--theme-color);
+            border-radius: 1em;
+            background: #000;
+        }
+        .btn-back {
+            background-color: var(--theme-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-family: 'Inter-Bold', sans-serif;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+        .btn-back:hover {
+            background-color: var(--xp-color);
+        }
+
+        /* 🆕 Estilos del Botón de Pantalla Completa */
+        .btn-fullscreen {
+            background-color: #28a745; /* Color verde llamativo */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-family: 'Inter-Bold', sans-serif;
+            margin-bottom: 20px;
+            margin-left: 10px; /* Separación horizontal del botón HOME */
+            transition: background 0.2s;
+        }
+        .btn-fullscreen:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body class="min-vh-100 layout d-flex flex-column">
+
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg layout-header navbar-light">
+        <div class="container-fluid">
+            <div class="navbar-brand" style="cursor: pointer;" onclick="cerrarJuego()">
+                <img src="https://files.catbox.moe/wryfkt.png" height="30" alt="LOGO">
+                <div class="buscador">
+                    <div class="input-group input-group-inline shadow-none">
+    <span class="input-group-text bg-transparent border-0 text-gray-500 shadow-none ps-0 pe-2">
+        <!-- SVG Lupa moderno y ligero -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    </span>
+    <input type="text" class="form-control form-control-flush bg-transparent border-0 ps-0" id="buscador" placeholder="Search .." onkeyup="filtrarJuegos()" style="font-family: Inter;">
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Principal de Contenido -->
+    <main class="layout-section" id="main-content">
+        <div class="container-fluid">
+           
+            <!-- ──────── CONTAINER DEL MENÚ PRINCIPAL ──────── -->
+            <div id="contenedor-menu">
+                <!-- Reemplazados los <br> por una clase de margen de Bootstrap (mb-4) -->
+                <div class="titulo mb-4">
+                    <h1>classroom 16x - Unblocked games ez</h1>
+                </div>
+               
+                <!-- Rejilla de Tarjetas de Juegos (Estructura corregida sin etiquetas A) -->
+                <div class="card-masonry">
+                    <!-- Juego: BIG TOWER -->
+                    <div onclick="abrirJuego('https://ubg98.github.io/BigTowerTinySquare/')" class="card large" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/0lvyHxHUIP.png" alt="BIG TOWER" class="img-fluid">
+                        <div class="card-body">
+                            <span>BIG TOWER TINY SQUARE</span>
+                        </div>
+                    </div>
+                   
+                    <!-- Juego: DRIVE MAD -->
+                    <div onclick="abrirJuego('https://mellifluous-baklava-b2e4fd.netlify.app')" class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-4TRMf8dlug.png" alt="DRIVE MAD" class="img-fluid">
+                        <div class="card-body">
+                            <span>DRIVE MAD</span>
+                        </div>
+                    </div>
+                   
+                    <!-- Juego: STICKMAN HOOK -->
+                    <div onclick="abrirJuego('https://stirring-rolypoly-f287c4.netlify.app')" class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-3IZE1sWF2o.png" alt="STICKMAN HOOK" class="img-fluid">
+                        <div class="card-body">
+                            <span>STICKMAN HOOK</span>
+                        </div>
+                    </div>
+                    <!-- Juego: DREADHEAD PARKOUR -->
+                    <div onclick="abrirJuego('https://dreadheadparkour.gitlab.io/file/')" class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-HkPGndJljg.webp" alt="DREADHEAD PARKOUR" class="img-fluid">
+                        <div class="card-body">
+                            <span>DREADHEAD PARKOUR</span>
+                        </div>
+                    </div>
+                    <!-- Juego: COOKIE CLICKER -->
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec')" class="card large" style="cursor: pointer;">
+                        <img src="https://static.wikia.nocookie.net/ficcion-sin-limites/images/2/26/Cookie-clicker.png/revision/latest?cb=20250613160015&path-prefix=es" alt="COOKIE CLICKER" class="img-fluid">
+                        <div class="card-body">
+                            <span>COOKIE CLICKER</span>
+                        </div>
+                    </div>
+                    <!-- Juego: SURVIVAL RACE -->
+                        <div onclick="abrirJuego('https://racesurvivalgame.com/gg/race-survival/')" class="card" style="cursor: pointer;">
+                        <img src="https://a.silvergames.com/j/b/survival-race.jpg" alt="SURVIVAL RACE" class="img-fluid">
+                        <div class="card-body">
+                            <span>SURVIVAL RACE</span>
+                        </div>
+                    </div>
+                    <!-- Juego: GUNSPIN -->
+                     <div onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/')" class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-5JX6OM04RJ.webp" alt="GUNSPIN" class="img-fluid">
+                        <div class="card-body">
+                            <span>GUNSPIN</span>
+                        </div>
+                    </div>
+                     <!-- Juego: AMONG US -->
+                     <div onclick="abrirJuego('https://amongus-online.gitlab.io/file/')" class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-LayNRvScdC.webp" alt="AMONG US" class="img-fluid">
+                        <div class="card-body">
+                            <span>AMONG US</span>
+                        </div>
+                    </div>
+
+                    <!-- Juego: OH FLIP -->
+                    <div onclick="abrirJuego('https://rad-beijinho-e0b733.netlify.app')" class="card large" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-83wv3wwULK.webp" alt="oh, flip" class="img-fluid">
+                        <div class="card-body">
+                            <span>OH FLIP</span>
+                        </div>
+                    </div>
+                    <!-- Juego: OvO -->
+                     <div onclick="abrirJuego('https://ovoclassic-pro.github.io/file/')" class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/rBcL0OlxUS.webp" alt="OvO" class="img-fluid">
+                        <div class="card-body">
+                            <span>OvO</span>
+                        </div>
+                    </div>
+                     <!-- Juego: BACKFLIP DIVE 3D -->
+                     <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/a9d7229d3be14c0284d5281d125f27f3/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.mathnook.com%2Ffun-games-2%2Fbackflip-dive-3d.html&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5tYXRobm9vay5jb20vZnVuLWdhbWVzLTIvYmFja2ZsaXAtZGl2ZS0zZC5odG1sIiwicGFyZW50RG9tYWluIjoibWF0aG5vb2suY29tIiwidG9wRG9tYWluIjoibWF0aG5vb2suY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTgifQ%253D%253D')" class="card" style="cursor: pointer;">
+                        <img src="https://files.catbox.moe/qklpz0.png" alt="BACKFLIP DIVE 3D" class="img-fluid">
+                        <div class="card-body">
+                            <span>BACKFLIP DIVE 3D</span>
+                        </div>
+                        </div>
+                        <!-- Juego: BLUMGI BOUNCE -->
+                     <div onclick="abrirJuego('https://games.arcadrome.com/blumgi-bounce/2/index.html')" class="card" style="cursor: pointer;">
+                        <img src="https://files.catbox.moe/gb9t3w.png" alt="BLUMGI BOUNCE" class="img-fluid">
+                        <div class="card-body">
+                            <span>BLUMGI BOUNCE</span>
+                        </div>
+                     </div>
+                    <!-- Juego: BLUMGI SLIME -->
+                     <div onclick="abrirJuego('https://geet.in.net/get/blumgi-slime/game.html')" class="card" style="cursor: pointer;">
+                        <img src="https://geet.in.net/get/blumgi-slime/logo.jpg" alt="BLUMGI SLIME" class="img-fluid">
+                        <div class="card-body">
+                            <span>BLUMGI SLIME</span>
+                        </div>
+                    </div>
+                    <!-- Juego: RED BALL 4 -->
+                     <div onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/')" class="card" style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=94,height=94,fit=cover,f=auto/9b739087f9938fb143a2519252addbb8/red-ball-4-logo.png" alt="RED BALL 4" class="img-fluid">
+                        <div class="card-body">
+                            <span>RED BALL 4</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BLUMGI ROCKET -->
+                     <div onclick="abrirJuego('https://geet.in.net/get/blumgi-rocket/game.html')" class="card" style="cursor: pointer;">
+                        <img src="https://geet.in.net/get/blumgi-rocket/thumb.png" alt="BLUMGI ROCKET" class="img-fluid">
+                        <div class="card-body">
+                            <span>BLUMGI ROCKET</span>
+                        </div>
+                        </div>
+                </div> <!-- Cierre correcto de card-masonry -->
+            </div> <!-- Cierre correcto de contenedor-menu -->
+
+
+            <!-- ──────── CONTAINER DEL VISOR DE JUEGOS (OCULTO AL INICIO) ──────── -->
+            <div id="pantalla-juego" style="display: none;">
+                <button class="btn-back" onclick="cerrarJuego()">
+                   HOME
+                </button>
+                <!-- 🆕 Nuevo Botón de Pantalla Completa -->
+                <button class="btn-fullscreen" onclick="toggleFullscreen()">
+                   FULLSCREEN
+                </button>
+                <br>
+                <iframe id="visor-juego" src="" allowfullscreen scrolling="no"></iframe>
+            </div>
+        </div> <!-- Cierre correcto de container-fluid -->
+    </main>
+
+
+    <!-- Script de control de la app unificada -->
+    <script>
+        function abrirJuego(urlJuego) {
+            if(urlJuego.includes('PON LA URL AQUÍ')) {
+                alert('Falta introducir la URL de inserción de este juego en el código HTML.');
+                return;
+            }
+            document.getElementById('contenedor-menu').style.display = 'none';
+            document.getElementById('pantalla-juego').style.display = 'block';
+            document.getElementById('visor-juego').src = urlJuego;
+        }
+
+        function cerrarJuego() {
+            document.getElementById('pantalla-juego').style.display = 'none';
+            document.getElementById('contenedor-menu').style.display = 'block';
+            document.getElementById('visor-juego').src = '';
+        }
+
+        /* 🆕 Nueva Función JavaScript para activar el Fullscreen en el Iframe */
+        function toggleFullscreen() {
+            var juegoIframe = document.getElementById('visor-juego');
+            if (juegoIframe.requestFullscreen) {
+                juegoIframe.requestFullscreen();
+            } else if (juegoIframe.webkitRequestFullscreen) { /* Compatibilidad con Safari/Chrome antiguo */
+                juegoIframe.webkitRequestFullscreen();
+            } else if (juegoIframe.msRequestFullscreen) { /* Compatibilidad con IE11 */
+                juegoIframe.msRequestFullscreen();
+            }
+        }
+          // 🔍 Función corregida para filtrar los juegos
+function filtrarJuegos() {
+    var input = document.getElementById('buscador');
+    var filtro = input.value.toLowerCase();
+    var contenedor = document.querySelector('.card-masonry');
+    var tarjetas = contenedor.getElementsByClassName('card');
+
+    for (var i = 0; i < tarjetas.length; i++) {
+        var nombreJuego = tarjetas[i].querySelector('.card-body span');
+        if (nombreJuego) {
+            var texto = nombreJuego.textContent || nombreJuego.innerText;
+            if (texto.toLowerCase().indexOf(filtro) > -1) {
+                tarjetas[i].style.setProperty('display', '', 'important'); // Muestra el juego
+            } else {
+                tarjetas[i].style.setProperty('display', 'none', 'important'); // Oculta el juego
+            }
+        }
+    }
+}
+    </script>
+    <!-- SCRIPT DEL TITULO -->
+         <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Obtiene las primeras dos letras del idioma (ej. "es", "en", "fr")
+            const userLang = navigator.language || navigator.userLanguage;
+            const langCode = userLang.slice(0, 2);
+
+            // Define los títulos para cada idioma
+            const titles = {
+                es: "Inicio - Classroom",
+                en: "Home - Classroom",
+                fr: "Accueli - Classroom"
+            };
+
+            // Asigna el título o usa uno por defecto (en) si el idioma no está en la lista
+            document.title = titles[langCode] || titles['en'];
+        });
+    </script>
+
+</body>
+</html>
