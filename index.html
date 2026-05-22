@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,49 +11,80 @@
     <!-- Para cuando Google lo indexe -->
     <meta property="og:title" content="Classroom 16x - Unblocked games EZ" />
     <meta name="twitter:title" content="Classroom 16x - Unblocked games EZ" />
-    <meta name="description" content="Classroom 16x is a free website that ofers quick plays, in school or work, NO ADS! Play quick now!">
+    <meta name="description"
+        content="Classroom 16x is a free website that offers quick plays, in school or work, NO ADS! Play quick now!">
     <meta name="google-site-verification" content="cV1CSTdfgWO6O6DRk3wWbY_94nXT6P3_13SNT_zs5jQ" />
     <!-- Estilo CSS cargado desde catbox (para no alargar el html) -->
-    <link rel="stylesheet" href="https://files.catbox.moe/v48766.css">
-   
+    <link rel="stylesheet" href="https://files.catbox.moe/gimk78.css">
+
     <!-- Estilos Personalizados -->
     <style>
         :root {
             --theme-color: #0f1aab;
             --xp-color: #0958b3;
         }
+
         @font-face {
             font-family: 'Inter';
             src: url('https://files.catbox.moe/0rqna3.woff2') format('woff2');
             font-display: swap;
         }
+
         @font-face {
             font-family: 'Inter-SemiBold';
             src: url('https://files.catbox.moe/ps9bqj.woff2') format('woff2');
             font-display: swap;
         }
+
         @font-face {
             font-family: 'Inter-Bold';
             src: url('https://files.catbox.moe/4usnmb.woff2') format('woff2');
             font-display: swap;
         }
-       
+
+        @media (min-width: 1200px) {
+
+            /* Ocupa el 96% de la pantalla, dejando solo un 2% libre a cada lado */
+            #main-content,
+            .navbar {
+                width: 96% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+
+        @media (min-width: 1600px) {
+
+            /* En pantallas muy grandes, se queda en un cómodo 94% (3% libre a cada lado) */
+            #main-content,
+            .navbar {
+                width: 94% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+
         /* Clases Globales */
         .titulo h1 {
             font-family: 'Inter-SemiBold', sans-serif;
-            text-transform: lowercase; /* Mantiene la estética humilde del h1 */
+            text-transform: lowercase;
+            /* Mantiene la estética humilde del h1 */
+            font-size: 35px;
         }
+
         .card-masonry {
             font-family: 'Inter', sans-serif;
         }
-       
+
         /* Optimización de Tarjetas */
         .card-masonry .card img {
             border-radius: 1em;
         }
+
         .card-masonry .card-body span {
             color: white;
         }
+
         .img-custom-width {
             width: 100%;
         }
@@ -63,6 +95,7 @@
             text-align: center;
             margin-top: 20px;
         }
+
         #visor-juego {
             width: 100%;
             max-width: 900px;
@@ -71,40 +104,23 @@
             border-radius: 1em;
             background: #000;
         }
-        /* 🌙 Estilos del Botón de Modo Oscuro */
-.btn-theme {
-    background-color: transparent;
-    border: 2px solid var(--theme-color);
-    color: var(--theme-color);
-    padding: 8px 15px;
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-family: 'Inter-Bold', sans-serif;
-    transition: all 0.2s ease;
-}
-.btn-theme:hover {
-    background-color: var(--theme-color);
-    color: white;
-}
 
-/* 🎨 Colores de emergencia si tu hoja externa no los cambia automáticamente */
-[data-theme="dark"] {
-    background-color: #121212 !important;
-    color: #f0f0f0 !important;
-}
-[data-theme="dark"] .navbar, [data-theme="dark"] .layout-header {
-    background-color: #1e1e1e !important;
-}
-[data-theme="dark"] .card {
-    background-color: #2a2a2a !important;
-}
-[data-theme="dark"] #buscador {
-    color: #fff !important;
-}
-[data-theme="dark"] .seo-section {
-    color: #bbb !important;
-    border-top-color: #333 !important;
-}
+        /* Definición del modo oscuro forzado */
+        .modo-oscuro {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+        }
+
+        .modo-oscuro .navbar,
+        .modo-oscuro .layout-header {
+            background-color: #1e1e1e !important;
+        }
+
+        .modo-oscuro .card {
+            background-color: #2a2a2a !important;
+            color: white !important;
+        }
+
         .btn-back {
             background-color: var(--theme-color);
             color: white;
@@ -116,13 +132,15 @@
             margin-bottom: 20px;
             transition: background 0.2s;
         }
+
         .btn-back:hover {
             background-color: var(--xp-color);
         }
 
         /* 🆕 Estilos del Botón de Pantalla Completa */
         .btn-fullscreen {
-            background-color: #28a745; /* Color verde llamativo */
+            background-color: #28a745;
+            /* Color verde llamativo */
             color: white;
             padding: 10px 20px;
             border: none;
@@ -130,16 +148,192 @@
             cursor: pointer;
             font-family: 'Inter-Bold', sans-serif;
             margin-bottom: 20px;
-            margin-left: 10px; /* Separación horizontal del botón HOME */
+            margin-left: 10px;
+            /* Separación horizontal del botón HOME */
             transition: background 0.2s;
         }
+
         .btn-fullscreen:hover {
             background-color: #218838;
+        }
+
+        /* Esto fuerza a que el texto sea blanco cuando el modo oscuro está activo */
+        .modo-oscuro h1,
+        .modo-oscuro h2,
+        .modo-oscuro span,
+        .modo-oscuro p,
+        .modo-oscuro label {
+            color: #ffffff !important;
+        }
+
+        /* Opcional: Para asegurar que el título del buscador también sea visible */
+        .modo-oscuro #buscador {
+            color: #ffffff !important;
+        }
+
+        /* 🕶️ Secret Cloak Menu Styles (Alt + Z) */
+        .cloak-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cloak-content {
+            background-color: #ffffff;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 1.2rem;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--theme-color);
+            transition: all 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+            margin-top: 0px;
+        }
+
+        [data-theme="dark"] .cloak-content {
+            background-color: #1e1e1e;
+            border-color: var(--xp-color);
+            color: #f0f0f0;
+        }
+
+        .cloak-header {
+            font-family: 'Inter-Bold', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cloak-close {
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #999;
+        }
+
+        .cloak-close:hover {
+            color: #f44336;
+        }
+
+        .cloak-field {
+            margin-bottom: 15px;
+        }
+
+        .cloak-field label {
+            display: block;
+            font-family: 'Inter-SemiBold', sans-serif;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .cloak-select,
+        .cloak-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            background: transparent;
+            color: inherit;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        [data-theme="dark"] .cloak-select,
+        [data-theme="dark"] .cloak-input {
+            border-color: #444;
+            background: #2a2a2a;
+        }
+
+        .cloak-btn-save {
+            background-color: var(--theme-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 0.5rem;
+            font-family: 'Inter-Bold', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .cloak-btn-save:hover {
+            background-color: var(--xp-color);
         }
     </style>
 </head>
 
 <body class="min-vh-100 layout d-flex flex-column">
+    <!-- Pestaña de editor de título -->
+    <div id="secretCloakModal" class="cloak-modal">
+        <div class="cloak-content">
+            <div class="cloak-header">
+                <span>Tab Disguise Settings</span>
+                <span class="cloak-close" onclick="toggleCloakMenu()">&times;</span>
+            </div>
+
+            <!-- Campo del Título Personalizado (¡ESTO FALTABA!) -->
+            <div class="cloak-field">
+                <label for="cloakCustomTitle">Custom Tab Title</label>
+                <input type="text" id="cloakCustomTitle" class="cloak-input" placeholder="Enter custom title...">
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakPresetLang">Preset Language Title</label>
+                <select id="cloakPresetLang" class="cloak-select" onchange="applyPresetLang(this.value)">
+                    <option value="">-- Choose a language --</option>
+                    <option value="en">English (Home - Classroom)</option>
+                    <option value="es">Español (Inicio - Classroom)</option>
+                    <option value="fr">Français (Accueil - Classroom)</option>
+                    <option value="de">Deutsch (Startseite - Classroom)</option>
+                    <option value="it">Italiano (Home page - Classroom)</option>
+                    <option value="pt">Português (Início - Classroom)</option>
+                    <option value="ru">Русский (Главная страница - Classroom)</option>
+                    <option value="zh">中文 (首页 - Classroom)</option>
+                    <option value="ja">日本語 (ホーム - Classroom)</option>
+                </select>
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakIconSelect">Page Icon (Favicon Preset)</label>
+                <select id="cloakIconSelect" class="cloak-select">
+                    <option value="https://www.gstatic.com/classroom/favicon.png">Google Classroom (Default)</option>
+                    <option
+                        value="https://www.gstatic.com/images/branding/productlogos/drive_2026/v1/web-32dp/logo_drive_2026_color_1x_web_32dp.png">
+                        Google Drive</option>
+                    <option value="https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico">Google Search
+                    </option>
+                    <option value="https://www.clever.com/wp-content/uploads/2023/06/cropped-Favicon-512px-270x270.png">
+                        Clever</option>
+                    <option value="https://www.blinklearning.com/favicon.ico">Blink Learning</option>
+                </select>
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakIconUrl">Or Paste Icon URL</label>
+                <input type="text" id="cloakIconUrl" class="cloak-input" placeholder="https://example.com/image.png">
+            </div>
+
+            <div class="cloak-field">
+                <label
+                    style="display: block; font-family: 'Inter-SemiBold', sans-serif; margin-bottom: 6px; font-size: 0.9rem;">Or
+                    Upload Image File</label>
+                <input type="file" id="cloakIconFile" accept="image/*" class="cloak-input" style="padding: 5px;">
+            </div>
+
+            <button class="cloak-btn-save" onclick="saveCloakSettings()">Apply Changes</button>
+        </div>
+    </div>
 
     <!-- Barra de Navegación Corregida Responsiva -->
     <nav class="navbar navbar-expand-lg layout-header navbar-light px-3">
@@ -147,21 +341,26 @@
             <!-- Logo que actúa como botón de inicio -->
             <div class="navbar-brand m-0" style="cursor: pointer;" onclick="cerrarJuego()">
                 <img src="https://i.postimg.cc/5NwkhMWw/logo-3.png" height="40" alt="CLASSROOM 16X">
-                <!-- Botón para cambiar a modo oscuro -->
-                <button class="btn-theme ms-2" onclick="toggleTheme()" id="theme-toggle-btn">🌙 Dark Mode</button>
+                <button id="mi-boton-tema" onclick="cambiarTema()" style="padding: 8px 15px; cursor: pointer; border-radius: 8px; 
+    border: 2px solid #0f1aab; background: white; color: #0f1aab; 
+    font-weight: bold; transition: 0.3s;">
+                    🌙 Dark Mode
+                </button>
             </div>
-            
+
             <!-- Buscador alineado responsivamente con clases Flex de Bootstrap -->
             <div class="flex-grow-1 max-width-search mx-3" style="max-width: 400px;">
                 <div class="input-group input-group-inline shadow-none">
                     <span class="input-group-text bg-transparent border-0 text-gray-500 shadow-none ps-0 pe-2">
                         <!-- SVG Lupa moderno y ligero -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </span>
-                    <input type="text" class="form-control form-control-flush bg-transparent border-0 ps-0" id="buscador" placeholder="Search .." onkeyup="filtrarJuegos()" style="font-family: Inter;">
+                    <input type="text" class="form-control form-control-flush bg-transparent border-0 ps-0"
+                        id="buscador" placeholder="Search .." onkeyup="filtrarJuegos()" style="font-family: Inter;">
                 </div>
             </div>
         </div>
@@ -170,97 +369,118 @@
     <!-- Sección Principal de Contenido -->
     <main class="layout-section" id="main-content">
         <div class="container-fluid">
-           
+
             <!-- ──────── CONTAINER DEL MENÚ PRINCIPAL ──────── -->
             <div id="contenedor-menu">
                 <div class="titulo mb-4">
-                    <h1>classroom 16x - unblocked games ez</h1>
+                    <h1>classroom 16x - unƅlocked gаmes ez</h1>
                 </div>
-               
+
                 <!-- Rejilla de Tarjetas de Juegos -->
                 <div class="card-masonry">
                     <!-- Juego: BIG TOWER -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/BigTowerTinySquare/')" class="card large" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/0lvyHxHUIP.png" alt="BIG TOWER" class="img-fluid">
+                    <div onclick="abrirJuego('https://ubg98.github.io/BigTowerTinySquare/')" class="card large"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/0lvyHxHUIP.png" alt="BIG TOWER"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BIG TOWER TINY SQUARE</span>
                         </div>
                     </div>
-                   
+
                     <!-- Juego: DRIVE MAD -->
-                    <div onclick="abrirJuego('https://mellifluous-baklava-b2e4fd.netlify.app')" class="card" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-4TRMf8dlug.png" alt="DRIVE MAD" class="img-fluid">
+                    <div onclick="abrirJuego('https://mellifluous-baklava-b2e4fd.netlify.app')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-4TRMf8dlug.png" alt="DRIVE MAD"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>DRIVE MAD</span>
                         </div>
                     </div>
-                   
+
                     <!-- Juego: STICKMAN HOOK -->
-                    <div onclick="abrirJuego('https://stirring-rolypoly-f287c4.netlify.app')" class="card" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-3IZE1sWF2o.png" alt="STICKMAN HOOK" class="img-fluid">
+                    <div onclick="abrirJuego('https://stirring-rolypoly-f287c4.netlify.app')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-3IZE1sWF2o.png" alt="STICKMAN HOOK"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>STICKMAN HOOK</span>
                         </div>
                     </div>
 
                     <!-- Juego: DREADHEAD PARKOUR -->
-                    <div onclick="abrirJuego('https://dreadheadparkour.gitlab.io/file/')" class="card" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-HkPGndJljg.webp" alt="DREADHEAD PARKOUR" class="img-fluid">
+                    <div onclick="abrirJuego('https://dreadheadparkour.gitlab.io/file/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-HkPGndJljg.webp"
+                            alt="DREADHEAD PARKOUR" class="img-fluid">
                         <div class="card-body">
                             <span>DREADHEAD PARKOUR</span>
                         </div>
                     </div>
 
                     <!-- Juego: COOKIE CLICKER -->
-                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec')" class="card large" style="cursor: pointer;">
-                        <img src="https://static.wikia.nocookie.net/ficcion-sin-limites/images/2/26/Cookie-clicker.png/revision/latest?cb=20250613160015&path-prefix=es" alt="COOKIE CLICKER" class="img-fluid">
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec')"
+                        class="card large" style="cursor: pointer;">
+                        <img src="https://static.wikia.nocookie.net/ficcion-sin-limites/images/2/26/Cookie-clicker.png/revision/latest?cb=20250613160015&path-prefix=es"
+                            alt="COOKIE CLICKER" class="img-fluid">
                         <div class="card-body">
                             <span>COOKIE CLICKER</span>
                         </div>
                     </div>
 
                     <!-- Juego: SURVIVAL RACE -->
-                    <div onclick="abrirJuego('https://racesurvivalgame.com/gg/race-survival/')" class="card" style="cursor: pointer;">
-                        <img src="https://a.silvergames.com/j/b/survival-race.jpg" alt="SURVIVAL RACE" class="img-fluid">
+                    <div onclick="abrirJuego('https://racesurvivalgame.com/gg/race-survival/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://a.silvergames.com/j/b/survival-race.jpg" alt="SURVIVAL RACE"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>SURVIVAL RACE</span>
                         </div>
                     </div>
 
                     <!-- Juego: GUNSPIN -->
-                    <div onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/')" class="card" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-5JX6OM04RJ.webp" alt="GUNSPIN" class="img-fluid">
+                    <div onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-5JX6OM04RJ.webp" alt="GUNSPIN"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>GUNSPIN</span>
                         </div>
                     </div>
 
                     <!-- Juego: AMONG US -->
-                    <div onclick="abrirJuego('https://amongus-online.gitlab.io/file/')" class="card" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-LayNRvScdC.webp" alt="AMONG US" class="img-fluid">
+                    <div onclick="abrirJuego('https://amongus-online.gitlab.io/file/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-LayNRvScdC.webp" alt="AMONG US"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>AMONG US</span>
                         </div>
                     </div>
 
                     <!-- Juego: OH FLIP -->
-                    <div onclick="abrirJuego('https://rad-beijinho-e0b733.netlify.app')" class="card large" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-83wv3wwULK.webp" alt="oh, flip" class="img-fluid">
+                    <div onclick="abrirJuego('https://rad-beijinho-e0b733.netlify.app')" class="card large"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-83wv3wwULK.webp" alt="oh, flip"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>OH FLIP</span>
                         </div>
                     </div>
 
                     <!-- Juego: OvO -->
-                    <div onclick="abrirJuego('https://ovoclassic-pro.github.io/file/')" class="card" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/rBcL0OlxUS.webp" alt="OvO" class="img-fluid">
+                    <div onclick="abrirJuego('https://ovoclassic-pro.github.io/file/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/rBcL0OlxUS.webp" alt="OvO"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>OvO</span>
                         </div>
                     </div>
 
                     <!-- Juego: BACKFLIP DIVE 3D -->
-                    <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/a9d7229d3be14c0284d5281d125f27f3/index.html')" class="card" style="cursor: pointer;">
+                    <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/a9d7229d3be14c0284d5281d125f27f3/index.html')"
+                        class="card" style="cursor: pointer;">
                         <img src="https://files.catbox.moe/qklpz0.png" alt="BACKFLIP DIVE 3D" class="img-fluid">
                         <div class="card-body">
                             <span>BACKFLIP DIVE 3D</span>
@@ -268,15 +488,18 @@
                     </div>
 
                     <!-- Juego: BLUMGI BOUNCE -->
-                    <div onclick="abrirJuego('https://games.arcadrome.com/blumgi-bounce/2/index.html')" class="card" style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/0364717f000f41088d794db6036f6ed2/blumgi-bounce-logo.png" alt="BLUMGI BOUNCE" class="img-fluid">
+                    <div onclick="abrirJuego('https://games.arcadrome.com/blumgi-bounce/2/index.html')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/0364717f000f41088d794db6036f6ed2/blumgi-bounce-logo.png"
+                            alt="BLUMGI BOUNCE" class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI BOUNCE</span>
                         </div>
                     </div>
 
                     <!-- Juego: BLUMGI SLIME -->
-                    <div onclick="abrirJuego('https://geet.in.net/get/blumgi-slime/game.html')" class="card" style="cursor: pointer;">
+                    <div onclick="abrirJuego('https://geet.in.net/get/blumgi-slime/game.html')" class="card"
+                        style="cursor: pointer;">
                         <img src="https://geet.in.net/get/blumgi-slime/logo.jpg" alt="BLUMGI SLIME" class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI SLIME</span>
@@ -284,63 +507,173 @@
                     </div>
 
                     <!-- Juego: RED BALL 4 -->
-                    <div onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/')" class="card" style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9b739087f9938fb143a2519252addbb8/red-ball-4-logo.png" alt="RED BALL 4" class="img-fluid">
+                    <div onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9b739087f9938fb143a2519252addbb8/red-ball-4-logo.png"
+                            alt="RED BALL 4" class="img-fluid">
                         <div class="card-body">
                             <span>RED BALL 4</span>
                         </div>
                     </div>
 
                     <!-- Juego: BLUMGI ROCKET -->
-                    <div onclick="abrirJuego('https://geet.in.net/get/blumgi-rocket/game.html')" class="card" style="cursor: pointer;">
-                        <img src="https://geet.in.net/get/blumgi-rocket/thumb.png" alt="BLUMGI ROCKET" class="img-fluid">
+                    <div onclick="abrirJuego('https://geet.in.net/get/blumgi-rocket/game.html')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://geet.in.net/get/blumgi-rocket/thumb.png" alt="BLUMGI ROCKET"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI ROCKET</span>
                         </div>
                     </div>
                     <!-- Juego: APPLE KNIGHT MINI DUNGEONS -->
-                    <div onclick="abrirJuego('https://games3.startgamer.ru/2/apple_knight_mini_dungeons/')" class="card large" style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/1fdaee6c03ca147819b5387958e6592c/apple-knight-mini-dungeons-logo.png" alt="APPLE KNIGHT MINI DUNGEONS" class="img-fluid">
+                    <div onclick="abrirJuego('https://games3.startgamer.ru/2/apple_knight_mini_dungeons/')"
+                        class="card large" style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/1fdaee6c03ca147819b5387958e6592c/apple-knight-mini-dungeons-logo.png"
+                            alt="APPLE KNIGHT MINI DUNGEONS" class="img-fluid">
                         <div class="card-body">
                             <span>APPLE KNIGHT MINI DUNGEONS</span>
                         </div>
-                </div>
+                    </div>
                     <!-- Juego: LEVEL DEVIL -->
-                    <div onclick="abrirJuego('https://stalwart-licorice-a40e53.netlify.app/')" class="card" style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/7e18b5cf7da58e6fc90144f747dcc949/level-devil-logo.png" alt="LEVEL DEVIL" class="img-fluid">
+                    <div onclick="abrirJuego('https://stalwart-licorice-a40e53.netlify.app/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/7e18b5cf7da58e6fc90144f747dcc949/level-devil-logo.png"
+                            alt="LEVEL DEVIL" class="img-fluid">
                         <div class="card-body">
                             <span>LEVEL DEVIL</span>
                         </div>
                     </div>
                     <!-- Juego: SUBWAY SURFERS -->
-                    <div onclick="abrirJuego('https://files.gamezhero.com/game/905/1d1/9051d1173be765fb/data/index.html')" class="card" style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/6cb3646f9210326b80124e79d6b75192/subway-surfers-logo.png" alt="SUBWAY SURFERS" class="img-fluid">
+                    <div onclick="abrirJuego('https://files.gamezhero.com/game/905/1d1/9051d1173be765fb/data/index.html')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/6cb3646f9210326b80124e79d6b75192/subway-surfers-logo.png"
+                            alt="SUBWAY SURFERS" class="img-fluid">
                         <div class="card-body">
                             <span>SUBWAY SURFERS</span>
+                        </div>
                     </div>
-                </div>
                     <!-- Juego: NEON CHALLENGE LEGENDS -->
-                    <div onclick="abrirJuego('https://g.igroutka.ru/games/1536/NQlZkEcweMyRiG0b/f07ccc43-4d95-4bf2-ad9f-d128a03b9a72/index.html')" class="card" style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/aea43e12a0278c8916c6b1cc7b59444c/neon-challenge-legends-logo.png" alt="NEON CHALLENGE LEGENDS" class="img-fluid">
+                    <div onclick="abrirJuego('https://g.igroutka.ru/games/1536/NQlZkEcweMyRiG0b/f07ccc43-4d95-4bf2-ad9f-d128a03b9a72/index.html')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/aea43e12a0278c8916c6b1cc7b59444c/neon-challenge-legends-logo.png"
+                            alt="NEON CHALLENGE LEGENDS" class="img-fluid">
                         <div class="card-body">
                             <span>NEON CHALLENGE LEGENDS</span>
+                        </div>
                     </div>
-                </div>
                     <!-- Juego: SPACE WAVES -->
-                    <div onclick="abrirJuego('https://space-waves-unblocked.github.io/space-waves/')" class="card" style="cursor: pointer;">
-                        <img src="https://imgs.crazygames.com/space-waves_1x1/20260330040751/space-waves_1x1-cover?format=auto&quality=100&metadata=none&width=1200" alt="SPACE WAVES" class="img-fluid">
+                    <div onclick="abrirJuego('https://space-waves-unblocked.github.io/space-waves/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://imgs.crazygames.com/space-waves_1x1/20260330040751/space-waves_1x1-cover?format=auto&quality=100&metadata=none&width=1200"
+                            alt="SPACE WAVES" class="img-fluid">
                         <div class="card-body">
                             <span>SPACE WAVES</span>
                         </div>
                     </div> <!-- <- CORREGIDO: Cierre de la tarjeta Space Waves -->
-
+                    <!-- Juego: GEOMETRY DASH LITE -->
+                    <div onclick="abrirJuego('https://geometrydashlitefree.com/play/gdlite/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://files.catbox.moe/si705u.png" alt="GEOMETRY DASH LITE" class="img-fluid">
+                        <div class="card-body">
+                            <span>GEOMETRY DASH LITE</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BASKET RANDOM -->
+                    <div onclick="abrirJuego('https://games.gamevgames.com/games/basket-random/index.html')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://files.catbox.moe/6vsyjv.jpg" alt="BASKET RANDOM" class="img-fluid">
+                        <div class="card-body">
+                            <span>BASKET RANDOM</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 2048 -->
+                    <div onclick=" alert('ALERT: To ensure the game looks right, please set it to fullscreen mode.'); abrirJuego('https://2048unblocked.bitbucket.io/file/')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-PUAzP3TO0F.webp" alt="2048"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>2048</span>
+                        </div>
+                    </div>
+                    <!-- Juego: PAPER.IO 2 -->
+                    <div onclick="abrirJuego('https://paperio2.bitbucket.io/file/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://paperio2.bitbucket.io/img/paper-io-2.png" alt="PAPER.IO 2" class="img-fluid">
+                        <div class="card-body">
+                            <span>PAPER.IO 2</span>
+                        </div>
+                    </div>
                     <!-- Juego: MONKEY MART -->
-                    <div onclick="abrirJuego('https://lively-croissant-f945a3.netlify.app/')" class="card large" style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-cvUM8tPFBv.webp" alt="MONKEY MART" class="img-fluid">
+                    <div onclick="abrirJuego('https://lively-croissant-f945a3.netlify.app/')" class="card large"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-cvUM8tPFBv.webp" alt="MONKEY MART"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>MONKEY MART</span>
                         </div>
                     </div> <!-- <- CORREGIDO: Cierre de la tarjeta Monkey Mart -->
+                    <!-- Juego: BALL RUN 2048 -->
+                    <div onclick="abrirJuego('https://codebeautify.org/real-time-html-editor/y25e2a0d063-b033-4c91-bf57-348de168d237#')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://i.postimg.cc/qB9zBwk8/unnamed-(2).png" alt="BALL RUN 2048" class="img-fluid">
+                        <div class="card-body">
+                            <span>BALL RUN 2048</span>
+                        </div>
+                    </div>
+
+                    <!-- Juego: PANDA RESORT -->
+                    <div onclick="abrirJuego({ es: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=es&tables_until=10&daily_reward=1&swap_mode=1', en: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=en&tables_until=10&daily_reward=1&swap_mode=1' })"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://files.catbox.moe/065pyp.png" alt="PANDA RESORT" class="img-fluid">
+                        <div class="card-body">
+                            <span>PANDA RESORT</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 3x3 RUNNER -->
+                    <div onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=es&swap_mode=1&1', en: 'https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=en&swap_mode=1&1' })"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://i.postimg.cc/NFk6vmBQ/3x3-runner-2-(1).png" alt="3x3 RUNNER"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>3x3 RUNNER</span>
+                        </div>
+                    </div>
+                    <!-- Juego: STEAL A BRAINROT -->
+                    <div onclick="abrirJuego('https://classroomlesson.github.io/basic-ruffle-player/html/steal_a_brainrot_2/index.html')"
+                        class="card large" style="cursor: pointer;">
+                        <img src="https://i.postimg.cc/7ZZXHqP0/no-Filter-(1).png" alt="STEAL A BRAINROT"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>STEAL A BRAINROT</span>
+                        </div>
+                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta Steal a Brainrot -->
+
+                    <!-- Juego: 3x3 OOBY -->
+                    <div onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=es&tables_until=10&swap_mode=1', en: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=en&tables_until=10&swap_mode=1' })"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://files.catbox.moe/6npbiz.png" alt="3x3 OOBY" class="img-fluid">
+                        <div class="card-body">
+                            <span>3x3 OOBY</span>
+                        </div>
+                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta 3x3 OOBY -->
+                    <!-- Juego: BALDIS BASICS CLASSIC -->
+                    <div onclick="abrirJuego('https://baldis-basics-online.github.io/file/')" class="card"
+                        style="cursor: pointer;">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-53XXPwcAbt.png"
+                            alt="BALDIS BASICS CLASSIC" class="img-fluid">
+                        <div class="card-body">
+                            <span>BALDIS BASICS CLASSIC</span>
+                        </div>
+                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta BALDIS BASICS CLASSIC -->
+                    <!-- Juego: MINECRAFT -->
+                    <div onclick="abrirJuego('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html')"
+                        class="card" style="cursor: pointer;">
+                        <img src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Homepage_Discover-our-games_MC-Vanilla-KeyArt_864x864.jpg"
+                            alt="MINECRAFT" class="img-fluid">
+                        <div class="card-body">
+                            <span>MINECRAFT</span>
+                        </div>
+                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta BALDIS BASICS CLASSIC -->
                 </div> <!-- Fin de card-masonry -->
             </div> <!-- Fin de contenedor-menu -->
         </div> <!-- Fin de container-fluid -->
@@ -350,142 +683,282 @@
             <button class="btn-back" onclick="cerrarJuego()">HOME</button>
             <button class="btn-fullscreen" onclick="toggleFullscreen()">FULLSCREEN</button>
             <br>
-            <iframe id="visor-juego" src="" allowfullscreen allow="fullscreen; gamepad; autoplay" scrolling="no"></iframe>
+            <iframe id="visor-juego" src="" allowfullscreen allow="fullscreen; gamepad; autoplay"
+                scrolling="no"></iframe>
         </div>
     </main>
 
-<div id="text-area">
-    <div class="seo-section mt-5 px-3 py-4 border-top" style="font-family: 'Inter', sans-serif; color: #555; max-width: 900px; margin: 0 auto;">
-    <h2 class="h4 mb-3" style="font-family: 'Inter-SemiBold', sans-serif; text-transform: none; color: var(--theme-color);">Why choose classroom 16x?</h2>
-    
-    <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-        In modern educational environments, finding a reliable platform for quick, high-quality brain breaks can be a challenge due to strict network restrictions. <strong>Classroom 16x</strong> is specifically designed to provide an optimized hub for <strong>unblocked games ez</strong> to access during free periods, lunch breaks, or after completing assignments. Our platform ensures that students and educators have a safe, smooth, and lightweight interface that bypasses common performance issues.
-    </p>
+    <div id="text-area">
+        <div class="seo-section mt-5 px-3 py-4 border-top"
+            style="font-family: 'Inter', sans-serif; color: #555; max-width: 900px; margin: 0 auto;">
+            <h2 class="h4 mb-3"
+                style="font-family: 'Inter-SemiBold', sans-serif; text-transform: none; color: var(--theme-color);">Why
+                choose classroom 16x?</h2>
 
-    <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-        Unlike traditional gaming sites that overload your browser with heavy scripts, <strong>Classroom 16x - Unblocked games EZ</strong> focuses on speed and minimalism. Every single game is carefully integrated via lightweight structures to guarantee maximum performance with <strong>NO ADS</strong> disrupting your session. This makes it the perfect alternative for quick, hassle-free gaming on school or work computers without experiencing lag.
-    </p>
+            <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
+                In modern educational environments, finding a reliable platform for quick, high-quality brain breaks can
+                be a challenge due to strict network restrictions. <strong>Classroom 16x</strong> is specifically
+                designed to provide an optimized hub for <strong>unblocked games ez</strong> to access during free
+                periods, lunch breaks, or after completing assignments. Our platform ensures that students and educators
+                have a safe, smooth, and lightweight interface that bypasses common performance issues.
+            </p>
 
-    <p class="m-0" style="font-size: 0.95rem; line-height: 1.6;">
-        Whether you want to challenge your skills in fast-paced arcade runners, solve complex physics puzzles, or enjoy classic clicker adventures, our library offers handpicked titles that load instantly in any standard browser. Explore our dynamic collection today and find out why we are the preferred choice for clean, unblocked student entertainment!
-    </p>
-</div>
+            <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
+                Unlike traditional gaming sites that overload your browser with heavy scripts, <strong>Classroom 16x -
+                    Unblocked games EZ</strong> focuses on speed and minimalism. Every single game is carefully
+                integrated via lightweight structures to guarantee maximum performance with <strong>NO ADS</strong>
+                disrupting your session. This makes it the perfect alternative for quick, hassle-free gaming on school
+                or work computers without experiencing lag.
+            </p>
 
-    <!-- Script de control -->
-    <script>
-        function abrirJuego(urlJuego) {
-            document.getElementById('contenedor-menu').style.display = 'none';
-            document.getElementById('text-area').style.display = 'none';
-            document.getElementById('pantalla-juego').style.display = 'block';
-            document.getElementById('visor-juego').src = urlJuego;
-        }
+            <p class="m-0" style="font-size: 0.95rem; line-height: 1.6;">
+                Whether you want to challenge your skills in fast-paced arcade runners, solve complex physics puzzles,
+                or enjoy classic clicker adventures, our library offers handpicked titles that load instantly in any
+                standard browser. Explore our dynamic collection today and find out why we are the preferred choice for
+                clean, unblocked student entertainment!
+            </p>
+            <br>
+            <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
+                Alt+Z to change tab settings.
+            </p>
+        </div>
 
-        function cerrarJuego() {
-            document.getElementById('pantalla-juego').style.display = 'none';
-            document.getElementById('contenedor-menu').style.display = 'block';
-            document.getElementById('text-area').style.display = 'block';
-            document.getElementById('visor-juego').src = '';
-        }
+        <!-- Script de control -->
+        <script>
+            function abrirJuego(urlInput) {
+                let urlFinal = "";
 
-        function toggleFullscreen() {
-            var juegoIframe = document.getElementById('visor-juego');
-            if (juegoIframe.requestFullscreen) {
-                juegoIframe.requestFullscreen();
-            } else if (juegoIframe.webkitRequestFullscreen) { 
-                juegoIframe.webkitRequestFullscreen();
-            } else if (juegoIframe.msRequestFullscreen) { 
-                juegoIframe.msRequestFullscreen();
-            }
-        }
+                // 🕵️‍♂️ AQUÍ SE COMPRUEBA SI EL JUEGO TIENE UNA LISTA ({ es: '...', en: '...' })
+                if (typeof urlInput === 'object' && urlInput !== null) {
 
-        function filtrarJuegos() {
-            var input = document.getElementById('buscador');
-            var filtro = input.value.toLowerCase();
-            var contenedor = document.querySelector('.card-masonry');
-            var tarjetas = contenedor.getElementsByClassName('card');
+                    // 🌍 Si es un objeto, SÍ está en la lista especial -> Detecta el idioma
+                    const idioma = (navigator.language || navigator.userLanguage).toLowerCase().slice(0, 2);
 
-            for (var i = 0; i < tarjetas.length; i++) {
-                var nombreJuego = tarjetas[i].querySelector('.card-body span');
-                if (nombreJuego) {
-                    var texto = nombreJuego.textContent || nombreJuego.innerText;
-                    if (texto.toLowerCase().indexOf(filtro) > -1) {
-                        tarjetas[i].style.setProperty('display', '', 'important'); 
+                    if (idioma === 'es') {
+                        urlFinal = urlInput.es || urlInput.en;
                     } else {
-                        tarjetas[i].style.setProperty('display', 'none', 'important'); 
+                        urlFinal = urlInput.en || urlInput.es;
+                    }
+
+                } else {
+                    // 🚀 ¡AQUÍ ENTRA SI NO ESTÁ EN LA LISTA! (Si es una URL de texto normal)
+                    // El script dice: "Ah, es un juego normal, uso la URL tal cual me la dieron".
+                    urlFinal = urlInput;
+                }
+
+                // 🖥️ Inyecta la URL final calculada en el visor (sea la traducida o la normal)
+                const contenedorMenu = document.getElementById('contenedor-menu');
+                const texto = document.getElementById('text-area');
+                const pantallaJuego = document.getElementById('pantalla-juego');
+                const visorJuego = document.getElementById('visor-juego');
+
+                if (contenedorMenu && pantallaJuego && visorJuego) {
+                    contenedorMenu.style.display = 'none';
+                    pantallaJuego.style.display = 'block';
+                    texto.style.display = 'none';
+                    visorJuego.src = urlFinal;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+            function cerrarJuego() {
+                document.getElementById('pantalla-juego').style.display = 'none';
+                document.getElementById('contenedor-menu').style.display = 'block';
+                document.getElementById('text-area').style.display = 'block';
+                document.getElementById('visor-juego').src = '';
+            }
+
+            function toggleFullscreen() {
+                var juegoIframe = document.getElementById('visor-juego');
+                if (juegoIframe.requestFullscreen) {
+                    juegoIframe.requestFullscreen();
+                } else if (juegoIframe.webkitRequestFullscreen) {
+                    juegoIframe.webkitRequestFullscreen();
+                } else if (juegoIframe.msRequestFullscreen) {
+                    juegoIframe.msRequestFullscreen();
+                }
+            }
+
+            function filtrarJuegos() {
+                var input = document.getElementById('buscador');
+                var filtro = input.value.toLowerCase();
+                var contenedor = document.querySelector('.card-masonry');
+                var tarjetas = contenedor.getElementsByClassName('card');
+
+                for (var i = 0; i < tarjetas.length; i++) {
+                    var nombreJuego = tarjetas[i].querySelector('.card-body span');
+                    if (nombreJuego) {
+                        var texto = nombreJuego.textContent || nombreJuego.innerText;
+                        if (texto.toLowerCase().indexOf(filtro) > -1) {
+                            tarjetas[i].style.setProperty('display', '', 'important');
+                        } else {
+                            tarjetas[i].style.setProperty('display', 'none', 'important');
+                        }
                     }
                 }
             }
-        }
-        // Nueva funcion para modo oscuro
-        function toggleTheme() {
-    const htmlTag = document.documentElement;
-    const btn = document.getElementById('theme-toggle-btn');
-    
-    if (htmlTag.getAttribute('data-theme') === 'light') {
-        htmlTag.setAttribute('data-theme', 'dark');
-        btn.innerHTML = '☀️ Light Mode';
-    } else {
-        htmlTag.setAttribute('data-theme', 'light');
-        btn.innerHTML = '🌙 Dark Mode';
-    }
-}
-    </script>
+        </script>
 
-    <!-- SCRIPT INYECTOR DE TÍTULO CAMUFLADO -->
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const userLang = navigator.language || navigator.userLanguage;
-  const langCode = userLang.slice(0, 2);
-  
-  const titles = {
-    es: "Inicio - Classroom",
-    en: "Home - Classroom",
-    fr: "Accueil - Classroom",
-    ca: "Inici - Classroom",
-    eu: "Hasiera - Classroom",
-    gl: "Inicio - Classroom",
-    de: "Startseite - Classroom",
-    it: "Home page - Classroom",
-    pt: "Início - Classroom",
-    nl: "Home - Classroom",
-    pl: "Strona główna - Classroom",
-    sv: "Startsida - Classroom",
-    fi: "Aloitussivu - Classroom",
-    no: "Startside - Classroom",
-    da: "Startside - Classroom",
-    el: "Αρχική σελίδα - Classroom",
-    ru: "Главная страница - Classroom",
-    ja: "ホーム - Classroom",
-    ko: "홈 - Classroom",
-    zh: "首页 - Classroom",
-    vi: "Trang chủ - Classroom",
-    th: "หน้าแรก - Classroom",
-    hi: "होम - Classroom",
-    ar: "الصفحة الرئيسية - Classroom",
-    he: "דף הבית - Classroom",
-    tr: "Ana Sayfa - Classroom",
-    sw: "Mwanzo - Classroom"
-  };
+        <!-- SCRIPT INYECTOR DE TÍTULO CAMUFLADO -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const userLang = navigator.language || navigator.userLanguage;
+                const langCode = userLang.slice(0, 2);
 
-  // Comprobamos si el idioma existe en el diccionario
-  if (titles[langCode]) {
-    // Si existe, SOLO cambia el título al idioma correspondiente
-    document.title = titles[langCode];
-  } else {
-    // Si tiene un idioma super raro, este es el título
-    document.title = "Classroom 16x - Unblocked games EZ"; 
+                const titles = {
+                    es: "Inicio - Classroom",
+                    en: "Home - Classroom",
+                    fr: "Accueil - Classroom",
+                    ca: "Inici - Classroom",
+                    eu: "Hasiera - Classroom",
+                    gl: "Inicio - Classroom",
+                    de: "Startseite - Classroom",
+                    it: "Home page - Classroom",
+                    pt: "Início - Classroom",
+                    nl: "Home - Classroom",
+                    pl: "Strona główna - Classroom",
+                    sv: "Startsida - Classroom",
+                    fi: "Aloitussivu - Classroom",
+                    no: "Startside - Classroom",
+                    da: "Startside - Classroom",
+                    el: "Αρχική σελίδα - Classroom",
+                    ru: "Главная страница - Classroom",
+                    ja: "ホーム - Classroom",
+                    ko: "홈 - Classroom",
+                    zh: "首页 - Classroom",
+                    vi: "Trang chủ - Classroom",
+                    th: "หน้าแรก - Classroom",
+                    hi: "होम - Classroom",
+                    ar: "الصفحة الرئيسية - Classroom",
+                    he: "דף הבית - Classroom",
+                    tr: "Ana Sayfa - Classroom",
+                    sw: "Mwanzo - Classroom"
+                };
 
-    // Código para cambiar favicon cuando tiene un idioma raro
-    let link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'icon';
-      document.head.appendChild(link);
-    }
-    link.href = "https://files.catbox.moe/z90mt8.png"; 
-  }
-});
+                // Comprobamos si el idioma existe en el diccionario
+                if (titles[langCode]) {
+                    // Si existe, SOLO cambia el título al idioma correspondiente
+                    document.title = titles[langCode];
+                } else {
+                    // Si tiene un idioma super raro, este es el título
+                    document.title = "Classroom 16x - Unblocked games EZ";
 
-    </script>
+                    // Código para cambiar favicon cuando tiene un idioma raro
+                    let link = document.querySelector("link[rel~='icon']");
+                    if (!link) {
+                        link = document.createElement('link');
+                        link.rel = 'icon';
+                        document.head.appendChild(link);
+                    }
+                    link.href = "https://files.catbox.moe/z90mt8.png";
+                }
+            });
+
+        </script>
+        <script>
+            // ⌨️ Event Listener para detectar la combinación Alt + Z
+            window.addEventListener('keydown', (e) => {
+                if (e.altKey && e.key.toLowerCase() === 'z') {
+                    e.preventDefault();
+                    toggleCloakMenu();
+                }
+            });
+
+            function toggleCloakMenu() {
+                const modal = document.getElementById('secretCloakModal');
+                if (modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                } else {
+                    modal.style.display = 'block';
+
+                    // Auto-rellenar campos actuales de forma segura
+                    const customTitleInput = document.getElementById('cloakCustomTitle');
+                    if (customTitleInput) {
+                        customTitleInput.value = document.title;
+                    }
+
+                    let currentIcon = document.querySelector("link[rel~='icon']");
+                    if (currentIcon && currentIcon.href.indexOf('data:image') === -1) {
+                        document.getElementById('cloakIconSelect').value = currentIcon.href;
+                    }
+                }
+            }
+
+            // Diccionario interno mapeado para los idiomas rápidos desde el selector
+            const cloakLanguages = {
+                en: "Home - Classroom", es: "Inicio - Classroom", fr: "Accueil - Classroom",
+                de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom",
+                ru: "Главная página - Classroom", zh: "首页 - Classroom", ja: "ホーム - Classroom"
+            };
+
+            function applyPresetLang(langCode) {
+                if (langCode && cloakLanguages[langCode]) {
+                    document.getElementById('cloakCustomTitle').value = cloakLanguages[langCode];
+                }
+            }
+
+            function saveCloakSettings() {
+                const titleInput = document.getElementById('cloakCustomTitle');
+                const newTitle = titleInput ? titleInput.value.trim() : "";
+                const presetIcon = document.getElementById('cloakIconSelect').value;
+                const urlIcon = document.getElementById('cloakIconUrl').value.trim();
+                const fileInput = document.getElementById('cloakIconFile');
+
+                // 🏷️ 1. Cambiar el título si se ha rellenado
+                if (newTitle) {
+                    document.title = newTitle;
+                }
+                tttttttttttttttt
+                // 🔄 Función auxiliar para inyectar o actualizar el Favicon en el <head>
+                const updateFavicon = (iconSrc) => {
+                    let link = document.querySelector("link[rel~='icon']");
+                    if (!link) {
+                        link = document.createElement('link');
+                        link.rel = 'icon';
+                        link.type = 'image/png';
+                        document.head.appendChild(link);
+                    }
+                    link.href = iconSrc;
+                    toggleCloakMenu(); // Cierra el menú al terminar de actualizar
+                };
+
+                // 🛠️ 2. Determinar qué icono aplicar (Archivo local > URL Custom > Preset)
+                if (fileInput && fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        updateFavicon(e.target.result); // Base64 generado localmente desde el archivo subido
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else if (urlIcon) {
+                    updateFavicon(urlIcon); // URL externa manual
+                } else {
+                    updateFavicon(presetIcon); // Opción seleccionada en el menú desplegable
+                }
+            }
+        </script>
+        <script>
+            function cambiarTema() {
+                const body = document.body;
+                const boton = document.getElementById('mi-boton-tema');
+                const titulo = document.getElementById('titulo'); // Reemplaza con el ID de tu h1
+
+                // Alternar clases de fondo y texto
+                body.classList.toggle('modo-oscuro');
+
+                // Cambiar texto y estilos del botón
+                if (body.classList.contains('modo-oscuro')) {
+                    boton.innerHTML = '☀️ Light Mode';
+                    boton.style.background = '#0f1aab';
+                    boton.style.color = 'white';
+                    titulo.style.color = 'white'; // Cambia el h1 a blanco
+                } else {
+                    boton.innerHTML = '🌙 Dark Mode';
+                    boton.style.background = 'white';
+                    boton.style.color = '#0f1aab';
+                    titulo.style.color = ''; // Vuelve al color por defecto
+                }
+            }
+
+        </script>
 </body>
+
 </html>
