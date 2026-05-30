@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>oh, flip! - MOD MENU EDITION</title>
+
+    <style>
+        /* Estilos de la página principal */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0d0d11;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Contenedor del iframe para que ocupe toda la pantalla */
+        #game-container {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* BOTÓN FLOTANTE DEL MOD MENU */
+        #mod-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 14px 28px;
+            background: linear-gradient(45deg, #ff0055, #00ffcc);
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+            z-index: 9999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        #mod-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.8);
+            color: white;
+        }
+
+        /* PANEL DEL MOD MENU */
+        #mod-menu {
+            position: fixed;
+            top: 85px;
+            left: 20px;
+            width: 320px;
+            background: rgba(10, 10, 15, 0.95);
+            border: 3px solid #00ffcc;
+            border-radius: 15px;
+            padding: 20px;
+            color: #00ffcc;
+            display: none; /* Oculto por defecto */
+            z-index: 9999;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        #mod-menu h2 {
+            margin-top: 0;
+            color: #ff0055;
+            text-align: center;
+            font-size: 26px;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.6);
+            border-bottom: 2px dashed #00ffcc;
+            padding-bottom: 10px;
+        }
+
+        .mod-group {
+            margin-bottom: 18px;
+        }
+
+        .mod-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #ff0055;
+            font-weight: bold;
+        }
+
+        .mod-btn-action {
+            width: 100%;
+            padding: 12px;
+            background: #1a1a24;
+            border: 2px solid #00ffcc;
+            color: #00ffcc;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .mod-btn-action:hover {
+            background: #00ffcc;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .mod-input {
+            width: calc(100% - 24px);
+            padding: 10px;
+            background: #111;
+            border: 1px solid #ff0055;
+            color: #fff;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .danger-btn {
+            border-color: #ff0055 !important;
+            color: #ff0055 !important;
+        }
+        .danger-btn:hover {
+            background: #ff0055 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="mod-btn" onclick="toggleMenu()">👾 MOD MENU 👾</button>
+
+    <div id="mod-menu">
+        <h2>HACK PANEL</h2>
+        
+        <div class="mod-group">
+            <button class="mod-btn-action" onclick="hackCompleteGoal()">⏩ Saltar/Completar Misión</button>
+        </div>
+
+        <div class="mod-group">
+            <label>Teletransporte de Altura (ft):</label>
+            <input type="number" id="input-height" class="mod-input" value="1000">
+            <button class="mod-btn-action" onclick="hackHeight()">Aplicar Altura</button>
+        </div>
+
+        <div class="mod-group">
+            <label>Contador de Flips Totales:</label>
+            <input type="number" id="input-flips" class="mod-input" value="1337">
+            <button class="mod-btn-action" onclick="hackFlips()">Modificar Flips</button>
+        </div>
+
+        <div class="mod-group">
+            <button class="mod-btn-action danger-btn" onclick="hackSuperJump()">🚀 Activar Súper Salto</button>
+        </div>
+
+        <div class="mod-group">
+            <button class="mod-btn-action" onclick="hackAntiCrash()">🛡️ Activar Vida Infinita</button>
+        </div>
+
+        <div class="mod-group">
+            <button class="mod-btn-action danger-btn" onclick="hackReset()">🧹 Resetear TODO a 0</button>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <iframe id="game-iframe"></iframe>
+    </div>
+
+    <script>
+        // Usamos codificación hexadecimal de escape (\x3C y \x3E) para que el HTML Parser jamás se confunda
+        const originalGameHTML = `
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0px; border: 0; overflow: hidden; display: block; background-color: black; }
+        center { display: flex; justify-content: center; align-items: center; height: 100vh; }
+    </style>
+</head>
+<body>
+    <center>
+    <div id="game">
+        <canvas id="canvas" width="800" height="600" style="width:800px; height:600px"></canvas>
+    </div>
+    \x3Cscript\x3E
+        // === ESCUDO ANTI-BLOQUEO DE LOCALSTORAGE ===
+        let localStorage;
+        try {
+            localStorage = window.localStorage;
+            if (!localStorage) throw new Error();
+            localStorage.getItem("ohflip.goalIdx");
+        } catch (e) {
+            var _mockStorage = {};
+            localStorage = {
+                getItem: function(k) { return _mockStorage[k] || null; },
+                setItem: function(k, v) { _mockStorage[k] = v.toString(); },
+                removeItem: function(k) { delete _mockStorage[k]; },
+                clear: function() { _mockStorage = {}; }
+            };
+        }
+
+        var b = document.getElementById("canvas"), c = b.getContext("2d", { alpha: !1 }), e = b.width, aa = b.height, ba, ca = -1, da = -1, h = 0, k = 0, l = 0, m = 0, p = 1E3, q = 0, r = !1, t = 0, u = 3, ea = .5, v = !1, w = 0, fa = !1, x = 0, y = 0, z = 0, ha = 0, A = !1, B = 0, C = 0, D = !1, E = 0, F = 0, G = 0, H = .7, I = 0, J = 0, K = !1, ia = 0, ja = 0, L = !0, M = !1, ka = [], N = [], O = parseInt(localStorage.getItem("ohflip.goalIdx")) || 0; N.push({ text: "Do a flip", b: P, a: 1 }); N.push({ text: "Land 2 flips in a row", b: Q, a: 2 }); N.push({ text: "Land perfectly", b: la, a: 1 }); N.push({ text: "Reach a height of 20 ft", b: R, a: 20 });
+        N.push({ text: "Do a double flip", b: P, a: 2 }); N.push({ text: "Land 3 flips in a row", b: Q, a: 3 }); N.push({ text: "Land on your head", b: ma, a: 1 }); N.push({ text: "Do a triple flip", b: P, a: 3 }); N.push({ text: "Land perfectly 2 times in a row", b: na, a: 2 }); N.push({ text: "Reach a height of 50 ft", b: R, a: 5 }); N.push({ text: "Land 4 flips in a row", b: Q, a: 4 }); N.push({ text: "Do a quad flip", b: P, a: 4 }); N.push({ text: "Land 5 flips in a row", b: Q, a: 5 }); N.push({ text: "Land perfectly 3 times in a row", b: na, a: 3 });
+        N.push({ text: "Reach a height of 100 ft", b: R, a: 10 }); N.push({ text: "Do a x5 flip", b: P, a: 5 }); N.push({ text: "Land 10 flips in a row", b: Q, a: 10 }); N.push({ text: "Reach a height of 250 ft", b: R, a: 250 }); N.push({ text: "Land perfectly 5 times in a row", b: na, a: 5 }); N.push({ text: "Do a x10 flip", b: P, a: 7 }); N.push({ text: "Reach a height of 500 ft", b: R, a: 500 }); var S = 0; document.addEventListener("mousedown", function (a) { K = !0; T(a) }, !1); document.addEventListener("mouseup", function (a) { K = !1; T(a) }, !1);
+        document.addEventListener("touchstart", function (a) { K = !0; T(a); a.preventDefault() }, !1); document.addEventListener("touchend", function (a) { K = !1; T(a); a.preventDefault() }, !1); document.addEventListener("touchcancel", function (a) { K = !1; T(a); a.preventDefault() }, !1); document.addEventListener("keydown", function (a) { a.altKey && "KeyR" === a.code && (localStorage.setItem("ohflip.maxHeightFt", 0), localStorage.setItem("ohflip.maxTotalFlips", 0), localStorage.setItem("ohflip.goalIdx", 0), O = 0) });
+        function T(a) { ia = a.pageX - b.offsetLeft; ja = a.pageY - b.offsetTop } function pa() { k = h = 0; l = p = 1E3; q = m = 0; r = !1; G = F = t = 0; H = .7; I = 0; v = !1; ha = S = z = y = x = 0; A = !1; C = B = 0; D = !1; E = 0 }
+        function qa(a) {
+            var d = Math.min((a - (ba || a)) / 1E3, .2); ba = a; a = b.width / b.height; var f = window.innerWidth, g = window.innerWidth / a; g > window.innerHeight && (g = window.innerHeight, f = g * a); if (f !== ca || g !== da) b.style.width = f + "px", b.style.height = g + "px", ca = f, da = g; window.scrollTo(0, 0); ra(d); a = K && !M; v ? (a = w / 1, h = 400 * Math.cos(a * Math.PI * .5) * (fa ? -1 : 1) * p * .001, k = 200 * Math.sin(a * Math.PI) * p * .001, m += 800 * d * (fa ? -1 : 1), w -= d, 0 >= w && pa()) : (a && 100 < k ? (r = !1, q += .1 * (720 - q)) : (r && (m *= .8, .01 > Math.abs(m) && (r = !1)), q *= .7), a = m, m += q * d, t += m - a, a = y, y = Math.floor((t +
+                90) / 360), y > a && (U(.5 * b.width + 100, b.height - 200, "x" + y, "#D37CFF"), 0 < l && ha++), 180 <= m ? m -= 360 : -180 > m && (m += 360), l += -1400 * d, k += l * d, E = Math.max(k, E), 0 >= k && (F = 16, G = 0, 30 < Math.abs(m) ? (v = !0, w = 1, fa = .5 > Math.random(), U(.5 * b.width + 100, b.height - 100, "miss", "#F42"), 145 < Math.abs(m) && (D = !0)) : (a = 270 <= t, A = 6.5 > Math.abs(m), p = a ? p + (A ? 180 : 120) * (1 + y / 5 * .5) : Math.max(p - 120, 1E3), a && A && !L && (J = .025), a ? (z = y, x += y, B++, A && C++, A ? U(.5 * b.width + 100, b.height - 100, "perfect!", "#FF0") : U(.5 * b.width + 100, b.height - 100, "good", "#0F4")) : C = B = 0), O < N.length &&
+                    N[O].b(N[O]) && (U(b.width - 100, 120, "complete!", "#FF0", !0), S = 1, C = B = 0), k = 0, l = p, r = !0, ha = y = z = t = 0, D = !1, E = 0), u -= d, ea -= d, 0 >= u && (u = 1 + 3 * Math.random(), ea = .1 + .1 * Math.random())); a = 280 / Math.max(k, 280) * 1.5; I = a < H ? 3 : I - d; a = Math.min(H, a); .5 > a && (a = Math.pow(a, .97)); H += .2 * (a - H); 0 >= I && (H += .001 * (.7 - H)); J *= .8; F *= .9; G += 4E3 * d; c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.fillStyle = "#AADDFF"; c.fillRect(0, 0, b.width, b.height); c.restore(); c.save(); c.scale(H + J, H + J); e = b.width / (H + J); aa = b.height / (H + J); c.translate(.5 * (e - b.width), aa - b.height);
+            c.save(); c.translate(.5 * b.width, b.height - 120); X(e, 240, "#00D846"); Y(-196, -20, -196, 80, 12); Y(196, -20, 196, 80, 12); c.translate(0, Math.sin(G * Math.PI / 180) * F); Y(-200, 0, 200, 0, 12); c.restore(); c.save(); c.translate(.5 * b.width + h, b.height - 170 - k); c.rotate(m * Math.PI / 180); c.translate(0, -40); X(80, 96, "#FF9600"); c.save(); 0 < ea || v ? (c.translate(-4, 4), X(40, 40, "#000"), c.translate(4, 4), X(34, 34, "#FF9600"), c.translate(-12, 0)) : (c.translate(-4, 4), X(40, 40, "#FFF"), c.translate(-8, 4 - 7 * Math.max(Math.min(l / 1E3, 1), 0)), X(16, 24, "#000"));
+            c.restore(); c.translate(-4, 4); !K || M ? (c.translate(8, 40), Y(0, 0, 0, 60, 8)) : (c.translate(8, 40), Y(0, 0, -30, 20, 8), Y(-30, 20, 0, 40, 8)); c.restore(); sa(); c.restore(); window.requestAnimationFrame(qa)
+        } function ra(a) { K ? (M || (L && (M = !0), L = !1), O === N.length && ia > .5 * b.width && 75 > ja && (localStorage.setItem("ohflip.goalIdx", 0), O = 0, pa(), M = L = !0)) : M = !1; ka.forEach(function (d, f, g) { d.time += a; .5 <= d.time && g.splice(f, 1) }); 0 < S && (S -= a, 0 >= S && (O++, localStorage.setItem("ohflip.goalIdx", O))) }
+        function Y(a, d, f, g, n) { c.save(); c.strokeStyle = "#000"; c.lineWidth = n; c.beginPath(); c.moveTo(a, d); c.lineTo(f, g); c.stroke(); c.restore() } function X(a, d, f) { a *= .5; d *= .5; c.save(); c.fillStyle = f; c.beginPath(); c.moveTo(-a, -d); c.lineTo(a, -d); c.lineTo(a, d); c.lineTo(-a, d); c.lineTo(-a, -d); c.fill(); c.restore() } function Z(a, d, f, g, n, V, W) { c.save(); c.translate(d, f); c.rotate(g); c.font = "bold " + n + "px Arial"; c.fillStyle = W; c.textAlign = V.toLowerCase(); c.fillText(a, 0, 0); c.restore() }
+        function sa() {
+            c.save(); c.setTransform(1, 0, 0, 1, 0, 0); if (L) Z("oh, flip!", .5 * b.width, 160, -5 * Math.PI / 180, 170, "center", "#000"), Z("oh, flip!", .5 * b.width - 10, 155, -5 * Math.PI / 180, 170, "center", "#FF9600"), Z("a game about backflips", .5 * b.width, 240, -5 * Math.PI / 180, 50, "center", "#000"), Z("a game about backflips", .5 * b.width - 4, 235, -5 * Math.PI / 180, 50, "center", "#FFF"), Z("land flips to gain height - complete goals to feel good", .5 * b.width, b.height - 20, 0, 25, "center", "#000"), Z("land flips to gain height - complete goals to feel good",
+                .5 * b.width - 3, b.height - 23, 0, 25, "center", "#FFF"); else {
+                    var a = Math.floor(k / 40), d = localStorage.getItem("ohflip.maxHeightFt"); if (null === d || a > d) localStorage.setItem("ohflip.maxHeightFt", a), d = a; Z("Height: " + a + " ft (Best: " + d + " ft)", 12, 27, 0, 20, "left", "#000"); a = localStorage.getItem("ohflip.maxTotalFlips"); if (null === a || x > a) localStorage.setItem("ohflip.maxTotalFlips", x), a = x; Z("Flips: " + x + " (Best: " + a + ")", 12, 50, 0, 20, "left", "#000"); a = "#000"; 0 < S && (a = .075 > S % .15 ? "#000" : "#00FF00"); O < N.length ? (Z("Goal #" + (O + 1) + ":",
+                        b.width - 12, 27, 0, 20, "right", a), Z(N[O].text, b.width - 12, 50, 0, 20, "right", a)) : (a = 400 > Date.now() % 800 ? "#000" : "#FF9600", Z("Congratulations! You've completed all goals!", b.width - 12, 27, 0, 20, "right", a), Z("Press here to reset and play again!", b.width - 12, 50, 0, 20, "right", a))
+            } ka.forEach(function (f) {
+                var g = Math.min(f.time / .1, 1), n = Math.min(f.time / .4, 1), V = 25 * Math.sin(n * Math.PI * .5); n = 50 * Math.sin(n * Math.PI * .5); var W = f.c ? 20 : 30, oa = f.c ? 10 : 25; Z(f.text, f.x + V, f.y - n, -5 * Math.PI / 180, W + Math.sin(g * Math.PI * .75) * oa, "center", "#000");
+                Z(f.text, f.x + V - 3, f.y - n - 3, -5 * Math.PI / 180, W + Math.sin(g * Math.PI * .75) * oa, "center", f.color)
+            }); c.restore()
+        } function U(a, d, f, g, n) { ka.push({ x: a, y: d, text: f, color: g, time: 0, c: n || !1 }) } function P(a) { return z >= a.a ? !0 : !1 } function la() { return A && 0 < z } function Q(a) { return B >= a.a } function na(a) { return C >= a.a } function ma() { return D } function R(a) { return Math.floor(E / 40) >= a.a } pa(); window.requestAnimationFrame(qa);
+    \x3C/script\x3E
+</body>
+</html>
+        `;
+
+        // Inyectamos el juego en el iframe de forma dinámica
+        const iframe = document.getElementById('game-iframe');
+        const doc = iframe.contentWindow.document;
+        doc.open();
+        doc.write(originalGameHTML);
+        doc.close();
+
+        // Control de Estado de Vida Infinita
+        window.godModeActive = false;
+
+        function getGame() {
+            return iframe.contentWindow;
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mod-menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function hackCompleteGoal() {
+            const game = getGame();
+            if (game && typeof game.O !== 'undefined') {
+                game.O++; 
+                game.localStorage.setItem("ohflip.goalIdx", game.O);
+                game.U(game.b.width / 2, 200, "HACK: GOAL SKIPPED!", "#00ffcc", true);
+            }
+        }
+
+        function hackHeight() {
+            const game = getGame();
+            const inputVal = parseInt(document.getElementById('input-height').value);
+            if (game && !isNaN(inputVal)) {
+                game.k = inputVal * 40; 
+                game.E = Math.max(game.k, game.E); 
+                game.U(game.b.width / 2, game.b.height - 300, "HEIGHT INJECTED!", "#ff0055");
+            }
+        }
+
+        function hackFlips() {
+            const game = getGame();
+            const inputVal = parseInt(document.getElementById('input-flips').value);
+            if (game && !isNaN(inputVal)) {
+                game.x = inputVal;  
+                game.z = inputVal;  
+                game.B = inputVal;  
+                game.C = inputVal;  
+                game.localStorage.setItem("ohflip.maxTotalFlips", inputVal);
+                game.U(game.b.width / 2, game.b.height - 300, `FLIPS ALTERED TO ${inputVal}!`, "#FFFF00", true);
+            }
+        }
+
+        function hackSuperJump() {
+            const game = getGame();
+            if (game) {
+                game.p = 9000; 
+                game.l = 9000; 
+                game.U(game.b.width / 2, game.b.height - 300, "SUPER JUMP ENGAGED!", "#00ffcc", true);
+            }
+        }
+
+        function hackAntiCrash() {
+            const game = getGame();
+            if (game) {
+                if (!window.godModeActive) {
+                    window.godModeActive = true;
+                    setInterval(() => {
+                        const g = getGame();
+                        if (g) {
+                            if (g.v) {
+                                g.v = false;
+                                g.w = 0;
+                                g.m = 0;   
+                                g.k = 120; 
+                                g.l = 1200; 
+                            }
+                            if (g.k <= 35 && Math.abs(g.m) > 30) {
+                                g.m = 0; 
+                            }
+                        }
+                    }, 8);
+                    game.U(game.b.width / 2, game.b.height - 300, "GOD MODE: ALWAYS ACTIVE!", "#00FF46", true);
+                } else {
+                    game.U(game.b.width / 2, game.b.height - 300, "GOD MODE ALREADY ACTIVE!", "#00FF46");
+                }
+            }
+        }
+
+        function hackReset() {
+            const game = getGame();
+            if (game) {
+                game.localStorage.setItem("ohflip.goalIdx", 0);
+                game.localStorage.setItem("ohflip.maxHeightFt", 0);
+                game.localStorage.setItem("ohflip.maxTotalFlips", 0);
+                game.O = 0;
+                game.pa();
+                document.getElementById('input-height').value = 1000;
+                document.getElementById('input-flips').value = 1337;
+                game.U(game.b.width / 2, game.b.height - 300, "ALL MEMORY & STORAGE RESETED!", "#ff0055", true);
+            }
+        }
+    </script>
+</body>
+</html>

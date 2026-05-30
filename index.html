@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<!-- https://clooudmoonclassroom16x.netlify.app/ -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon de Classroom -->
-    <link rel="icon" type="image/png" href="https://www.gstatic.com/classroom/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/favicons/classroom.webp">
     <!-- Ponemos "Classroom 16x - Unblocked games EZ" porque así cuando Google lo indexe salga como ese resultado -->
     <title>Classroom 16x - Unblocked games EZ</title>
     <!-- Para cuando Google lo indexe -->
@@ -586,6 +585,23 @@
             transition: background 0.2s;
         }
 
+        .btn-blank {
+            background-color: #8e44ad;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-family: 'Inter-Bold', sans-serif;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-blank:hover {
+            background-color: #732d91;
+        }
+
         .btn-report {
             background-color: #e74c3c;
             color: white;
@@ -737,6 +753,13 @@
             background-color: var(--xp-color);
         }
 
+        img {
+            color: #0531f7;
+            background-color: #f8f9fa;
+            display: block;
+        }
+
+
         /* Diseño de tres columnas pegado a los bordes */
         .visor-layout-container {
             display: flex;
@@ -858,11 +881,10 @@
             <div class="cloak-field">
                 <label for="cloakIconSelect">Page Icon (Favicon Preset)</label>
                 <select id="cloakIconSelect" class="cloak-select">
-                    <option value="https://www.gstatic.com/classroom/favicon.png">Google Classroom (Default)</option>
-                    <option
-                        value="https://www.gstatic.com/images/branding/productlogos/drive_2026/v1/web-32dp/logo_drive_2026_color_1x_web_32dp.png">
+                    <option value="/assets/favicons/classroom.webp">Google Classroom (Default)</option>
+                    <option value="/assets/favicons/google-drive.webp">
                         Google Drive</option>
-                    <option value="https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico">Google Search
+                    <option value="/assets/favicons/google.webp">Google Search
                     </option>
                     <option value="https://www.clever.com/wp-content/uploads/2023/06/cropped-Favicon-512px-270x270.png">
                         Clever</option>
@@ -890,13 +912,12 @@
     <nav class="navbar navbar-expand-lg layout-header navbar-light px-3">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <!-- Logo que actúa como botón de inicio -->
-            <div class="navbar-brand m-0" style="cursor: pointer;" onclick="cerrarJuego()">
+            <div class="navbar-brand m-0" style="cursor: pointer; display: flex; align-items: center; gap: 10px;" onclick="cerrarJuego()">
                 <img src="/assets/logo/logo.png" height="40" alt="CLASSROOM 16X">
                 <button id="mi-boton-tema" aria-label="Toggle dark mode" onclick="cambiarTema()" style="padding: 8px 15px; cursor: pointer; border-radius: 8px; 
     border: 2px solid #0f1aab; background: white; color: #0f1aab; 
     font-weight: bold; transition: 0.3s;">
                     🌙 Dark Mode
-                </button>
             </div>
 
             <!-- Buscador alineado responsivamente con clases Flex de Bootstrap -->
@@ -933,27 +954,28 @@
                     <!-- Juego: BIG TOWER TINY SQUARE -->
                     <div onclick="abrirJuego('https://ubg98.github.io/BigTowerTinySquare/')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/big-tower-tiny-square.webp" alt="BIG TOWER" class="img-fluid">
+                        <img src="/images/big-tower-tiny-square.webp"
+                            alt="BIG TOWER TINY SQUARE, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>BIG TOWER TINY SQUARE</span>
                         </div>
                     </div>
 
                     <!-- Juego: DRIVE MAD -->
-                    <div onclick="abrirJuego('https://mellifluous-baklava-b2e4fd.netlify.app')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-4TRMf8dlug.png" alt="DRIVE MAD"
-                            class="img-fluid">
+                    <div onclick="abrirJuego('/games/drive-mad/index.html')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-4TRMf8dlug.png"
+                            alt="DRIVE MAD, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>DRIVE MAD</span>
                         </div>
                     </div>
 
                     <!-- Juego: STICKMAN HOOK -->
-                    <div onclick="abrirJuego('https://stirring-rolypoly-f287c4.netlify.app')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-3IZE1sWF2o.png" alt="STICKMAN HOOK"
-                            class="img-fluid">
+                    <div onclick="abrirJuego('/games/stickman-hook/index.html')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-3IZE1sWF2o.png"
+                            alt="STICKMAN HOOK, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>STICKMAN HOOK</span>
                         </div>
@@ -963,7 +985,7 @@
                     <div onclick="abrirJuego('https://dreadheadparkour.gitlab.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-HkPGndJljg.webp"
-                            alt="DREADHEAD PARKOUR" class="img-fluid">
+                            alt="DREADHEAD PARKOUR, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>DREADHEAD PARKOUR</span>
                         </div>
@@ -972,7 +994,8 @@
                     <!-- Juego: COOKIE CLICKER -->
                     <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec')"
                         class="card large" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/cookie-clicker.webp" alt="COOKIE CLICKER" class="img-fluid">
+                        <img src="/images/cookie-clicker.webp" alt="COOKIE CLICKER, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>COOKIE CLICKER</span>
                         </div>
@@ -981,7 +1004,8 @@
                     <!-- Juego: SURVIVAL RACE -->
                     <div onclick="abrirJuego('https://racesurvivalgame.com/gg/race-survival/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/survival-race.webp" alt="SURVIVAL RACE" class="img-fluid">
+                        <img src="/images/survival-race.webp" alt="SURVIVAL RACE, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>SURVIVAL RACE</span>
                         </div>
@@ -990,8 +1014,8 @@
                     <!-- Juego: GUNSPIN -->
                     <div onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-5JX6OM04RJ.webp" alt="GUNSPIN"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-5JX6OM04RJ.webp"
+                            alt="GUNSPIN, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>GUNSPIN</span>
                         </div>
@@ -1000,18 +1024,18 @@
                     <!-- Juego: AMONG US -->
                     <div onclick="abrirJuego('https://amongus-online.gitlab.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-LayNRvScdC.webp" alt="AMONG US"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-LayNRvScdC.webp"
+                            alt="AMONG US, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>AMONG US</span>
                         </div>
                     </div>
 
                     <!-- Juego: OH FLIP -->
-                    <div onclick="abrirJuego('https://rad-beijinho-e0b733.netlify.app')" class="card large"
+                    <div onclick="abrirJuego('https://rogoogle.github.io/oh-flip-/')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-83wv3wwULK.webp" alt="oh, flip"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-83wv3wwULK.webp"
+                            alt="'oh, flip,' play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>OH FLIP</span>
                         </div>
@@ -1020,8 +1044,8 @@
                     <!-- Juego: OvO -->
                     <div onclick="abrirJuego('https://ovoclassic-pro.github.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/rBcL0OlxUS.webp" alt="OvO"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/rBcL0OlxUS.webp"
+                            alt="OvO, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>OvO</span>
                         </div>
@@ -1030,7 +1054,8 @@
                     <!-- Juego: BACKFLIP DIVE 3D -->
                     <div onclick="abrirJuego('https://bronze-philly-66.tiiny.site/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/backflip-dive-3d.webp" alt="BACKFLIP DIVE 3D" class="img-fluid">
+                        <img src="/images/backflip-dive-3d.webp" alt="BACKFLIP DIVE 3D, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BACKFLIP DIVE 3D</span>
                         </div>
@@ -1039,7 +1064,8 @@
                     <!-- Juego: BLUMGI BOUNCE -->
                     <div onclick="abrirJuego('https://pizzaedition.win/assets/allgames/blumgi-bounce/index.html')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/blumgi-bounce.webp" alt="BLUMGI BOUNCE" class="img-fluid">
+                        <img src="/images/blumgi-bounce.webp" alt="BLUMGI BOUNCE, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI BOUNCE</span>
                         </div>
@@ -1048,7 +1074,8 @@
                     <!-- Juego: BLUMGI SLIME -->
                     <div onclick="abrirJuego('https://blumgislime.gitlab.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/blumgi-slime.webp" alt="BLUMGI SLIME" class="img-fluid">
+                        <img src="/images/blumgi-slime.webp" alt="BLUMGI SLIME, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI SLIME</span>
                         </div>
@@ -1058,7 +1085,7 @@
                     <div onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9b739087f9938fb143a2519252addbb8/red-ball-4-logo.png"
-                            alt="RED BALL 4" class="img-fluid">
+                            alt="RED BALL 4, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>RED BALL 4</span>
                         </div>
@@ -1067,7 +1094,8 @@
                     <!-- Juego: BLUMGI ROCKET -->
                     <div onclick="abrirJuego('https://classroom2111.github.io/g16/class-413/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/blumgi-rocket.webp" alt="BLUMGI ROCKET" class="img-fluid">
+                        <img src="/images/blumgi-rocket.webp" alt="BLUMGI ROCKET, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI ROCKET</span>
                         </div>
@@ -1076,17 +1104,17 @@
                     <div onclick="abrirJuego('https://res.xc.com/play/30431/index.html')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/1fdaee6c03ca147819b5387958e6592c/apple-knight-mini-dungeons-logo.png"
-                            alt="APPLE KNIGHT MINI DUNGEONS" class="img-fluid">
+                            alt="APPLE KNIGHT MINI DUNGEONS, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>APPLE KNIGHT MINI DUNGEONS</span>
                         </div>
                     </div>
 
                     <!-- Juego: LEVEL DEVIL -->
-                    <div onclick="abrirJuego('https://stalwart-licorice-a40e53.netlify.app/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('/games/level-devil/index.html')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/7e18b5cf7da58e6fc90144f747dcc949/level-devil-logo.png"
-                            alt="LEVEL DEVIL" class="img-fluid">
+                            alt="LEVEL DEVIL, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>LEVEL DEVIL</span>
                         </div>
@@ -1095,7 +1123,7 @@
                     <div onclick="abrirJuego('https://files.gamezhero.com/game/905/1d1/9051d1173be765fb/data/index.html')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/6cb3646f9210326b80124e79d6b75192/subway-surfers-logo.png"
-                            alt="SUBWAY SURFERS" class="img-fluid">
+                            alt="SUBWAY SURFERS, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>SUBWAY SURFERS</span>
                         </div>
@@ -1104,7 +1132,7 @@
                     <div onclick="abrirJuego('https://g.igroutka.ru/games/1536/NQlZkEcweMyRiG0b/f07ccc43-4d95-4bf2-ad9f-d128a03b9a72/index.html')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/aea43e12a0278c8916c6b1cc7b59444c/neon-challenge-legends-logo.png"
-                            alt="NEON CHALLENGE LEGENDS" class="img-fluid">
+                            alt="NEON CHALLENGE LEGENDS, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>NEON CHALLENGE LEGENDS</span>
                         </div>
@@ -1113,7 +1141,7 @@
                     <div onclick="abrirJuego('https://space-waves-unblocked.github.io/space-waves/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://imgs.crazygames.com/space-waves_1x1/20260330040751/space-waves_1x1-cover?format=auto&quality=100&metadata=none&width=1200"
-                            alt="SPACE WAVES" class="img-fluid">
+                            alt="SPACE WAVES, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>SPACE WAVES</span>
                         </div>
@@ -1121,7 +1149,8 @@
                     <!-- Juego: GEOMETRY DASH LITE -->
                     <div onclick="abrirJuego('https://lolygames.github.io/gd-lit/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/geometry-dash-lite.webp" alt="GEOMETRY DASH LITE" class="img-fluid">
+                        <img src="/images/geometry-dash-lite.webp" alt="GEOMETRY DASH LITE, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>GEOMETRY DASH LITE</span>
                         </div>
@@ -1129,7 +1158,8 @@
                     <!-- Juego: BASKET RANDOM -->
                     <div onclick="abrirJuego('https://games.gamevgames.com/games/basket-random/index.html')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/basket-random.webp" alt="BASKET RANDOM" class="img-fluid">
+                        <img src="/images/basket-random.webp" alt="BASKET RANDOM, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BASKET RANDOM</span>
                         </div>
@@ -1137,8 +1167,8 @@
                     <!-- Juego: 2048 -->
                     <div onclick=" alert('ALERT: To ensure the game looks right, please set it to fullscreen mode.'); abrirJuego('https://2048unblocked.bitbucket.io/file/')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-PUAzP3TO0F.webp" alt="2048"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-PUAzP3TO0F.webp"
+                            alt="2048, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>2048</span>
                         </div>
@@ -1146,16 +1176,17 @@
                     <!-- Juego: PAPER.IO 2 -->
                     <div onclick="abrirJuego('https://paperio2.bitbucket.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/paper-io-2.webp" alt="PAPER.IO 2" class="img-fluid">
+                        <img src="/images/paper-io-2.webp" alt="PAPER.IO 2, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>PAPER.IO 2</span>
                         </div>
                     </div>
                     <!-- Juego: MONKEY MART -->
-                    <div onclick="abrirJuego('https://lively-croissant-f945a3.netlify.app/')" class="card large"
+                    <div onclick="abrirJuego('/games/monkey-mart/index.html')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-cvUM8tPFBv.webp" alt="MONKEY MART"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-cvUM8tPFBv.webp"
+                            alt="MONKEY MART, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>MONKEY MART</span>
                         </div>
@@ -1163,7 +1194,8 @@
                     <!-- Juego: BALL RUN 2048 -->
                     <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/39b5aad36f514342966fbf3431e5ba6c/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=5182&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=242478&mp_game_uid=ball-run-2048&mp_game_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_int=1&mp_locale=es_ES&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_site_name=minijuegos.com&mp_site_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_timezone=Europe%2FMadrid&mp_view_type=&mini_signature=9c1e8313401c1b67580a9cc4696ce926&xdm_e=https%3A%2F%2Fwww.minijuegos.com&xdm_c=default6372&xdm_p=1&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5taW5panVlZ29zLmNvbS9qdWVnby9iYWxsLXJ1bi0yMDQ4IiwicGFyZW50RG9tYWluIjoibWluaWp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJtaW5panVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE4In0%253D')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/ball-run-2048.webp" alt="BALL RUN 2048" class="img-fluid">
+                        <img src="/images/ball-run-2048.webp" alt="BALL RUN 2048, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BALL RUN 2048</span>
                         </div>
@@ -1172,7 +1204,8 @@
                     <!-- Juego: PANDA RESORT -->
                     <div onclick="abrirJuego({ es: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=es&tables_until=10&daily_reward=1&swap_mode=1', en: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=en&tables_until=10&daily_reward=1&swap_mode=1' })"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/panda-resort.webp" alt="PANDA RESORT" class="img-fluid">
+                        <img src="/images/panda-resort.webp" alt="PANDA RESORT, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>PANDA RESORT</span>
                         </div>
@@ -1180,8 +1213,8 @@
                     <!-- Juego: 3x3 RUNNER -->
                     <div onclick="abrirJuego('https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=es&swap_mode=1&1')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://i.postimg.cc/NFk6vmBQ/3x3-runner-2-(1).png" alt="3x3 RUNNER"
-                            class="img-fluid">
+                        <img src="https://i.postimg.cc/NFk6vmBQ/3x3-runner-2-(1).png"
+                            alt="3x3 RUNNER, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>3x3 RUNNER</span>
                         </div>
@@ -1189,7 +1222,8 @@
                     <!-- Juego: STEAL A BRAINROT -->
                     <div onclick="abrirJuego('https://classroomlesson.github.io/basic-ruffle-player/html/steal_a_brainrot_2/index.html')"
                         class="card large" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/steal-a-brainrot.webp" alt="STEAL A BRAINROT" class="img-fluid">
+                        <img src="/images/steal-a-brainrot.webp" alt="STEAL A BRAINROT, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>STEAL A BRAINROT</span>
                         </div>
@@ -1198,7 +1232,7 @@
                     <!-- Juego: 3x3 OOBY -->
                     <div onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=es&tables_until=10&swap_mode=1', en: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=en&tables_until=10&swap_mode=1' })"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/3x3-ooby.webp" alt="3x3 OOBY" class="img-fluid">
+                        <img src="/images/3x3-ooby.webp" alt="3x3 OOBY, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>3x3 OOBY</span>
                         </div>
@@ -1207,7 +1241,7 @@
                     <div onclick="abrirJuego('https://baldis-basics-online.github.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-53XXPwcAbt.webp"
-                            alt="BALDIS BASICS CLASSIC" class="img-fluid">
+                            alt="BALDIS BASICS CLASSIC, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>BALDIS BASICS CLASSIC</span>
                         </div>
@@ -1216,7 +1250,7 @@
                     <div onclick="abrirJuego('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Homepage_Discover-our-games_MC-Vanilla-KeyArt_864x864.jpg"
-                            alt="MINECRAFT" class="img-fluid">
+                            alt="MINECRAFT, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>MINECRAFT</span>
                         </div>
@@ -1224,7 +1258,8 @@
                     <!-- Juego: DUCK LIFE 4 -->
                     <div onclick="abrirJuego('https://dnrweqffuwjtx.cloudfront.net/games/2024/wix/duck-life-4/index.html')"
                         class="card large" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/duck-life-4.webp" alt="DUCK LIFE 4" class="img-fluid">
+                        <img src="/images/duck-life-4.webp" alt="DUCK LIFE 4, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>DUCK LIFE 4</span>
                         </div>
@@ -1232,7 +1267,8 @@
                     <!-- Juego: JETPACK JOYRIDE -->
                     <div onclick="abrirJuego('https://dnrweqffuwjtx.cloudfront.net/games/2024/wix/duck-life-4/index.html')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/jetpack-joyride.webp" alt="JETPACK JOYRIDE" class="img-fluid">
+                        <img src="/images/jetpack-joyride.webp" alt="JETPACK JOYRIDE, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>JETPACK JOYRIDE</span>
                         </div>
@@ -1240,8 +1276,8 @@
                     <!-- Juego: SLOPE BALL -->
                     <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxvKf9LHprLoblEMWUoqXn4RHxNhtXwmIwYAEAR8UWCr7lFjKwYvkhzPnsb3RWeDZcm/exec')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/TRahOA6tkQ.webp" alt="SLOPE BALL"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/TRahOA6tkQ.webp"
+                            alt="SLOPE BALL, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>SLOPE BALL</span>
                         </div>
@@ -1258,8 +1294,8 @@
                     <!-- Juego: SOCCER RANDOM -->
                     <div onclick="abrirJuego('https://soccerrandom.bitbucket.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-1wgH5O57Kb.webp" alt="SOCCER RANDOM"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-1wgH5O57Kb.webp"
+                            alt="SOCCER RANDOM, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>SOCCER RANDOM</span>
                         </div>
@@ -1267,8 +1303,8 @@
                     <!-- Juego: CHROME DINO -->
                     <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbw52NjEXRvaVQ1ELomMIdmM_zD6JxK1LZVdxc5PxftzqAE00F4GzS15_JRXpyW_qbQz5Q/exec?refrescado=true')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-QgBQgTrLUy.webp" alt="CHROME DINO"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-QgBQgTrLUy.webp"
+                            alt="CHROME DINO, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>CHROME DINO</span>
                         </div>
@@ -1276,7 +1312,8 @@
                     <!-- Juego: ROBLOX CLICKER -->
                     <div onclick="abrirJuego('https://scratch.mit.edu/projects/1324128146/embed')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://i.postimg.cc/GpLzyBC9/descarga-1.webp" alt="ROBLOX CLICKER" class="img-fluid">
+                        <img src="https://i.postimg.cc/GpLzyBC9/descarga-1.webp"
+                            alt="ROBLOX CLICKER, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>ROBLOX CLICKER</span>
                         </div>
@@ -1284,8 +1321,8 @@
                     <!-- Juego: VOLLEY RANDOM -->
                     <div onclick="abrirJuego('https://volleyrandom.bitbucket.io/file/')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-GqrSHWvezl.webp" alt="VOLLEY RANDOM"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-GqrSHWvezl.webp"
+                            alt="VOLLEY RANDOM, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>VOLLEY RANDOM</span>
                         </div>
@@ -1293,8 +1330,8 @@
                     <!-- Juego: ROBLOX -->
                     <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');  abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.roblox.client/', en: 'https://web.cloudmoonapp.com/en/game/com.roblox.client/'}) }"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-tNMYtz1k5Z.webp" alt="ROBLOX"
-                            class="img-fluid">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-tNMYtz1k5Z.webp"
+                            alt="ROBLOX, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>ROBLOX</span>
                         </div>
@@ -1303,7 +1340,7 @@
                     <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes' )}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.android.chrome/', en: 'https://web.cloudmoonapp.com/en/game/com.android.chrome/'})"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/1280px-Google_Chrome_icon_%28February_2022%29.svg.png"
-                            alt="GOOGLE CHROME UNBLOCKED" class="img-fluid">
+                            alt="GOOGLE CHROME UNBLOCKED, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>GOOGLE CHROME UNBLOCKED</span>
                         </div>
@@ -1312,7 +1349,8 @@
                     <!-- Juego: YOUTUBE UNBLOCKED -->
                     <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/', en: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/'})"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/youtube-unblocked.webp" alt="YOUTUBE UNBLOCKED" class="img-fluid">
+                        <img src="/images/youtube-unblocked.webp" alt="YOUTUBE UNBLOCKED, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>YOUTUBE UNBLOCKED</span>
                         </div>
@@ -1320,8 +1358,8 @@
                     <!-- Juego: BRAWL STARS -->
                     <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.supercell.brawlstars/', en: 'https://web.cloudmoonapp.com/en/game/com.supercell.brawlstars/' })"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="https://i.scdn.co/image/ab6761610000e5ebf7b952107c126c561c52171e" alt="BRAWL STARS"
-                            class="img-fluid">
+                        <img src="https://i.scdn.co/image/ab6761610000e5ebf7b952107c126c561c52171e"
+                            alt="BRAWL STARS, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>BRAWL STARS</span>
                         </div>
@@ -1330,7 +1368,7 @@
                     <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.openai.chatgpt/', en: 'https://web.cloudmoonapp.com/en/game/com.openai.chatgpt/' })"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s"
-                            alt="CHATGPT UNBLOCKED" class="img-fluid">
+                            alt="CHATGPT UNBLOCKED, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>CHATGPT UNBLOCKED</span>
                         </div>
@@ -1338,7 +1376,8 @@
                     <!-- Juego: BLUMGI PAINTBALL -->
                     <div onclick="abrirJuego('https://storeg223.github.io/g66/class-871/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/blumgi-paintball.webp" alt="BLUMGI PAINTBALL" class="img-fluid">
+                        <img src="/images/blumgi-paintball.webp" alt="BLUMGI PAINTBALL, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI PAINTBALL</span>
                         </div>
@@ -1358,6 +1397,7 @@
                     <button class="btn-back" onclick="cerrarJuego()">HOME</button>
                     <button class="btn-fullscreen" onclick="toggleFullscreen()">FULLSCREEN</button>
                     <button class="btn-report" onclick="reportProblem()">REPORT ISSUE</button>
+                    <button class="btn-blank" onclick="openInAboutBlank()">OPEN IN about:blank</button>
                     <br>
                     <iframe id="visor-juego" src="" allow="fullscreen; gamepad; autoplay; keyboard-hub"
                         sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads"
@@ -1405,6 +1445,10 @@
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
                 <strong>Alt+Z</strong> to change tab settings.
             </p>
+            <a href="/">
+                <img src="/assets/logo/logo-1.webp"
+                    alt="CLASSROOM 16X - PLAY NOW, UNBANNED UNBLOCKED GAMES FREE! NO ADS!" width="720">
+            </a>
         </div>
     </div>
     <noscript>
@@ -1502,6 +1546,22 @@
                     }
                 }
             }
+        }
+        function openInAboutBlank() {
+            const iframe = document.getElementById('visor-juego');
+            if (!iframe || !iframe.src) return;
+
+            let win = window.open('about:blank');
+            win.document.body.style.margin = '0';
+            win.document.body.style.overflow = 'hidden';
+
+            let newIframe = win.document.createElement('iframe');
+            newIframe.src = iframe.src;
+            newIframe.style.width = '100vw';
+            newIframe.style.height = '100vh';
+            newIframe.style.border = 'none';
+
+            win.document.body.appendChild(newIframe);
         }
 
         // Control del Modo Oscuro
