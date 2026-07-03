@@ -1,37 +1,48 @@
 (function () {
     // 1. Verificar si la página está dentro de un iframe
     if (window.self !== window.top) {
-        try {
-            // Obtener la URL de la página que contiene el iframe
-            const parentUrl = window.top.location.href;
-            const hostname = window.top.location.hostname;
-
-            // 2. Definir las excepciones
-            // Comprueba si es localhost (127.0.0.1) o si el host empieza por "hub16x."
-            const isLocalhost = hostname === '127.0.0.1';
-            const isOfficialHub = hostname.startsWith('hub16x.');
-
-            // 3. Si NO cumple las excepciones, bloquear y mostrar la pantalla
-            if (!isLocalhost && !isOfficialHub) {
-                mostrarPantallaError();
+        
+        // Función interna para extraer el hostname de forma segura
+        function obtenerDominioPadre() {
+            // Método 1: Compatible con navegadores basados en Chromium (Chrome, Edge, Opera)
+            if (window.location.ancestorOrigins && window.location.ancestorOrigins.length > 0) {
+                try {
+                    const url = new URL(window.location.ancestorOrigins[0]);
+                    return url.hostname;
+                } catch(e) {}
             }
-        } catch (e) {
-            // Si ocurre un error de Origen Cruzado (CORS), significa que el iframe 
-            // está en un dominio totalmente diferente y no podemos leer 'window.top.location'.
-            // Por lo tanto, definitivamente NO está en una URL oficial.
+            // Método 2: Compatible con Firefox y Safari usando el Referrer de HTTP
+            if (document.referrer) {
+                try {
+                    const url = new URL(document.referrer);
+                    return url.hostname;
+                } catch(e) {}
+            }
+            // Si el navegador bloquea ambos por completo, devolvemos vacío para activar bloqueo por seguridad
+            return "";
+        }
+
+        const hostname = obtenerDominioPadre();
+
+        // 2. Definir los dominios de la LISTA BLANCA (Permitidos)
+        const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
+        const isOfficialHub = hostname.startsWith('hub16x.');
+        const isPanasSeven = hostname === 'panas-seven.vercel.app';
+
+        // 3. Si NO cumple ninguna de las excepciones permitidas, se bloquea la pantalla
+        if (!isLocalhost && !isOfficialHub && !isPanasSeven) {
             mostrarPantallaError();
         }
     }
 
     // Función para renderizar el mensaje de error
     function mostrarPantallaError() {
-        // Modificamos el HTML del cuerpo para mostrar el mensaje de bloqueo
         document.documentElement.innerHTML = `
 <style>
   body {
     background-color: #111;
     color: #fff;
-    font-family: Inter-SemiBold, monospace, "Segoe UI", -system-ui, sans-seirf;
+    font-family: Inter-SemiBold, monospace, "Segoe UI", -system-ui, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,27 +61,14 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   }
 
-  h1 {
-    color: #ffffffff;
-    margin-top: 0;
-  }
-
-  p {
-    line-height: 1.6;
-    font-size: 1.1em;
-    color: #ffffffff;
-  }
-
-  a {
-    color: #ffffffff;
-    text-decoration: none;
-    font-weight: bold;
-  }
+  h1 { color: #ffffff; margin-top: 0; }
+  p { line-height: 1.6; font-size: 1.1em; color: #ffffff; }
+  a { color: #ffffff; text-decoration: none; font-weight: bold; }
 </style>
 <div class="container">
   <h1>Oops, wrong address!</h1>
   <p>It looks like you are accessing Hub 16x via a non-official URL. <br><br>
-    <a href="https://hub16x.github.io" target="_parent">Click here to play!</a>
+    <a href="https://github.io" target="_parent">Click here to play!</a>
   </p>
 </div>
         `;
